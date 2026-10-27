@@ -157,7 +157,7 @@ export async function getOrderById(id: string): Promise<Order | null> {
 
 export async function getUserOrders(userId: string, limit = 50): Promise<Order[]> {
   const redis = getRedis();
-  const ids = await redis.lrange<string[]>(keys.userOrders(userId), 0, limit - 1);
+  const ids = await redis.lrange<string>(keys.userOrders(userId), 0, limit - 1);
   if (!ids || ids.length === 0) return [];
 
   const result: Order[] = [];
