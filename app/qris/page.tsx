@@ -50,14 +50,14 @@ async function extractQrisFromImage(file: File): Promise<string> {
 
 function QrisInfoRow({ label, value, badge }: { label: string; value: string; badge?: boolean }) {
   return (
-    <div className="flex items-center justify-between border-b border-gray-100 py-3 last:border-0">
-      <span className="text-xs font-medium text-gray-500">{label}</span>
+    <div className="flex items-center justify-between border-b border-slate-800/60 py-3 last:border-0">
+      <span className="text-xs font-medium text-slate-400">{label}</span>
       {badge ? (
-        <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-[10px] font-bold text-amber-600">
+        <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-extrabold text-amber-400">
           {value}
         </span>
       ) : (
-        <span className="text-xs font-bold text-gray-900">{value}</span>
+        <span className="text-xs font-extrabold text-slate-200">{value}</span>
       )}
     </div>
   );
@@ -67,12 +67,12 @@ function QrisInfoPanel({ info }: { info: QrisInfo }) {
   const issuerName = ISSUER_NAMES[info.issuer] ?? info.issuer;
   const methodLabel = info.method === "dynamic" ? "Dinamis" : "Statis";
   return (
-    <div className="animate-in fade-in overflow-hidden rounded-2xl border border-indigo-100 bg-indigo-50/30 shadow-sm backdrop-blur-sm duration-300">
-      <div className="flex items-center gap-2 border-b border-indigo-100 bg-indigo-50/60 px-4 py-3">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="shrink-0 text-indigo-600">
+    <div className="animate-in fade-in overflow-hidden rounded-2xl border border-emerald-500/30 bg-emerald-500/5 shadow-xl backdrop-blur-xl duration-300">
+      <div className="flex items-center gap-2 border-b border-emerald-500/20 bg-emerald-500/10 px-4 py-3">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="shrink-0 text-emerald-400">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
         </svg>
-        <span className="text-xs font-bold text-indigo-700">Informasi QRIS</span>
+        <span className="text-xs font-extrabold text-emerald-400">Informasi QRIS</span>
       </div>
       <div className="px-5">
         <QrisInfoRow label="Merchant" value={info.merchantName} />
@@ -83,8 +83,8 @@ function QrisInfoPanel({ info }: { info: QrisInfo }) {
         {info.category && <QrisInfoRow label="Kategori" value={info.category} />}
         <QrisInfoRow label="Mata Uang" value="IDR (Rupiah)" />
       </div>
-      <div className="bg-white/40 px-5 py-3">
-        <p className="text-[11px] font-medium leading-relaxed text-gray-500">
+      <div className="bg-slate-950/40 px-5 py-3">
+        <p className="text-[11px] font-medium leading-relaxed text-slate-400">
           ✓ QRIS valid · Pembayaran langsung masuk ke rekening merchant di atas
         </p>
       </div>
@@ -93,11 +93,11 @@ function QrisInfoPanel({ info }: { info: QrisInfo }) {
 }
 
 const STATUS_LABEL: Record<string, { label: string; text: string; bg: string; border: string }> = {
-  paid: { label: "Lunas ✓", text: "text-emerald-700", bg: "bg-emerald-100", border: "border-emerald-200" },
-  expired: { label: "Kadaluarsa", text: "text-red-700", bg: "bg-red-100", border: "border-red-200" },
-  pending: { label: "Menunggu", text: "text-indigo-700", bg: "bg-indigo-100", border: "border-indigo-200" },
-  awaiting_payment: { label: "Menunggu", text: "text-indigo-700", bg: "bg-indigo-100", border: "border-indigo-200" },
-  cancelled: { label: "Dibatalkan", text: "text-gray-700", bg: "bg-gray-100", border: "border-gray-200" },
+  paid: { label: "Lunas ✓", text: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
+  expired: { label: "Kadaluarsa", text: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20" },
+  pending: { label: "Menunggu", text: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+  awaiting_payment: { label: "Menunggu", text: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+  cancelled: { label: "Dibatalkan", text: "text-slate-400", bg: "bg-slate-500/10", border: "border-slate-500/20" },
 };
 
 const LS_KEY = "qris_last_order";
@@ -110,27 +110,30 @@ function PaymentSuccessOverlay({ order, onClose }: { order: Order; onClose: () =
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/40 p-4 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-xl"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-sm animate-in zoom-in-95 rounded-[2.5rem] border border-white/80 bg-white/90 p-8 text-center shadow-2xl backdrop-blur-xl duration-300"
+        className="w-full max-w-sm animate-in zoom-in-95 rounded-3xl border border-slate-800/80 bg-slate-900/90 p-8 text-center shadow-2xl backdrop-blur-2xl duration-300 ring-1 ring-white/10"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border-4 border-emerald-100 bg-emerald-50 text-emerald-500 shadow-inner">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
+        <div className="relative mx-auto mb-6 flex h-24 w-24 items-center justify-center">
+          <div className="absolute inset-0 rounded-full bg-emerald-500/20 animate-ping duration-1000" />
+          <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-slate-950 shadow-lg shadow-emerald-500/30">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
         </div>
-        <p className="mb-2 text-2xl font-black text-emerald-600">Pembayaran Masuk!</p>
-        <p className="mb-2 text-3xl font-extrabold tracking-tight text-gray-900">
+        <p className="mb-2 text-2xl font-black text-emerald-400">Pembayaran Masuk!</p>
+        <p className="mb-2 text-3xl font-black tracking-tight text-slate-100">
           {formatRupiah(order.totalAmount)}
         </p>
-        <p className="mb-5 text-sm font-medium text-gray-500">
-          {order.merchantName} · <span className="font-mono">{order.code}</span>
+        <p className="mb-5 text-sm font-semibold text-slate-400">
+          {order.merchantName} · <span className="font-mono text-emerald-400">{order.code}</span>
         </p>
         {order.paidAt && (
-          <div className="mb-6 inline-flex rounded-full bg-gray-100 px-4 py-1.5 text-xs font-bold text-gray-500">
+          <div className="mb-6 inline-flex rounded-full bg-slate-950/80 border border-slate-800/80 px-4 py-1.5 text-xs font-bold text-slate-400">
             {new Date(order.paidAt).toLocaleString("id-ID", {
               day: "numeric", month: "short", year: "numeric",
               hour: "2-digit", minute: "2-digit", second: "2-digit",
@@ -139,7 +142,7 @@ function PaymentSuccessOverlay({ order, onClose }: { order: Order; onClose: () =
         )}
         <button
           onClick={onClose}
-          className="w-full rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/30 transition-all hover:scale-[1.02] active:scale-95"
+          className="w-full rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 py-3.5 text-sm font-extrabold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95"
         >
           Tutup
         </button>
@@ -368,22 +371,22 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
   if (restoring) {
     return (
       <div className="flex items-center justify-center py-16">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-transparent border-t-indigo-600" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent shadow-lg shadow-emerald-500/20" />
       </div>
     );
   }
 
   if (noQris) {
     return (
-      <div className="rounded-[2rem] border border-white/60 bg-white/50 px-6 py-16 text-center shadow-sm backdrop-blur-xl">
-        <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-amber-200 bg-amber-50 text-amber-500">
+      <div className="rounded-3xl border border-slate-800/80 bg-slate-900/50 px-6 py-16 text-center shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
+        <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-500/30 bg-amber-500/10 text-amber-400">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2L1 21h22L12 2zm0 3l8.22 14H3.78L12 5zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z" />
           </svg>
         </div>
-        <p className="text-lg font-bold text-gray-900">Belum ada QRIS</p>
-        <p className="mt-2 text-sm font-medium text-gray-500">
-          Upload QRIS statis di tab <strong className="text-gray-700">QRIS Saya</strong> terlebih dahulu.
+        <p className="text-lg font-extrabold text-slate-100">Belum ada QRIS</p>
+        <p className="mt-2 text-sm font-medium text-slate-400">
+          Upload QRIS statis di tab <strong className="text-emerald-400">QRIS Saya</strong> terlebih dahulu.
         </p>
       </div>
     );
@@ -396,36 +399,36 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
           <PaymentSuccessOverlay order={order} onClose={() => setShowSuccess(false)} />
         )}
         <div className="animate-in fade-in slide-in-from-bottom-4 space-y-4 duration-500">
-          <div className="overflow-hidden rounded-[2.25rem] border border-white/60 bg-white/50 shadow-[0_8px_40px_rgb(0,0,0,0.04)] backdrop-blur-xl">
-            <div className="flex items-center justify-between border-b border-gray-100/80 bg-white/30 px-6 py-4">
-              <span className="max-w-[60%] truncate text-sm font-bold text-gray-700">{order.merchantName}</span>
+          <div className="overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/50 shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
+            <div className="flex items-center justify-between border-b border-slate-800/60 bg-slate-950/40 px-6 py-4">
+              <span className="max-w-[60%] truncate text-sm font-extrabold text-slate-200">{order.merchantName}</span>
               {st && (
-                <span className={`shrink-0 rounded-full border px-3 py-1 text-[11px] font-bold ${st.bg} ${st.text} ${st.border}`}>
+                <span className={`shrink-0 rounded-full border px-3 py-1 text-[11px] font-extrabold ${st.bg} ${st.text} ${st.border}`}>
                   {st.label}
                 </span>
               )}
             </div>
 
             <div className="px-6 pb-2 pt-6 text-center">
-              <p className="text-[11px] font-bold uppercase tracking-widest text-gray-400">Total Bayar</p>
-              <p className="mt-1 text-3xl font-black tracking-tight text-gray-900">{formatRupiah(order.totalAmount)}</p>
-              <p className="mt-1 font-mono text-xs font-semibold text-gray-400">{order.code}</p>
+              <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Total Bayar</p>
+              <p className="mt-1 text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">{formatRupiah(order.totalAmount)}</p>
+              <p className="mt-1 font-mono text-xs font-bold text-slate-400">{order.code}</p>
             </div>
 
             {order.status !== "paid" && order.status !== "cancelled" && qrDataUrl && (
               <div className="flex flex-col items-center gap-4 px-6 py-6">
-                <div className="relative rounded-[1.5rem] bg-white p-3.5 shadow-xl shadow-indigo-900/5 ring-1 ring-gray-900/5">
-                  <img src={qrDataUrl} alt="QRIS" width={220} height={220} className="block rounded-xl" />
+                <div className="group relative rounded-2xl bg-white p-4 shadow-2xl ring-4 ring-emerald-500/20 transition-all duration-300 hover:scale-[1.02]">
+                  <img src={qrDataUrl} alt="QRIS" width={220} height={220} className="block rounded-lg" />
                   {isActive && (
                     <div className="absolute -right-2 -top-2">
                       <span className="relative flex h-4 w-4">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-60" />
-                        <span className="relative inline-flex h-4 w-4 rounded-full bg-indigo-600 border-2 border-white" />
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex h-4 w-4 rounded-full bg-emerald-500 border-2 border-slate-950" />
                       </span>
                     </div>
                   )}
                 </div>
-                <p className="text-xs font-medium text-gray-500">
+                <p className="text-xs font-semibold text-slate-400">
                   Scan dengan DANA · ShopeePay · GoPay · OVO · semua bank
                 </p>
               </div>
@@ -434,63 +437,62 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
             {isActive && remaining > 0 && (
               <div className="px-6 pb-6">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400">Sisa Waktu</span>
-                  <span className={`font-mono text-sm font-bold ${remaining <= 60 ? "text-red-500" : "text-gray-900"}`}>
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-400">Sisa Waktu</span>
+                  <span className={`font-mono text-sm font-extrabold ${remaining <= 60 ? "text-rose-400" : "text-emerald-400"}`}>
                     {mins}:{secs.toString().padStart(2, "0")}
                   </span>
                 </div>
-                <div className="h-2 w-full overflow-hidden rounded-full bg-gray-100">
+                <div className="h-2 w-full overflow-hidden rounded-full bg-slate-950/80 border border-slate-800">
                   <div
-                    className={`h-full rounded-full transition-all duration-1000 ${timerPct > 40 ? "bg-indigo-500" : timerPct > 20 ? "bg-amber-500" : "bg-red-500"}`}
+                    className={`h-full rounded-full transition-all duration-1000 ${timerPct > 40 ? "bg-emerald-400" : timerPct > 20 ? "bg-amber-400" : "bg-rose-400"}`}
                     style={{ width: `${timerPct}%` }}
                   />
                 </div>
-                <p className="mt-3 text-center text-[11px] font-medium text-gray-400">
+                <p className="mt-3 text-center text-[11px] font-medium text-slate-500">
                   Memantau pembayaran secara otomatis...
                 </p>
               </div>
             )}
 
             {order.status === "paid" && (
-              <div className="mx-6 mb-6 rounded-[1.25rem] border border-emerald-200 bg-emerald-50 px-5 py-5 text-center shadow-inner">
-                <p className="text-base font-bold text-emerald-700">Pembayaran Berhasil!</p>
+              <div className="mx-6 mb-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-5 text-center shadow-inner">
+                <p className="text-base font-extrabold text-emerald-400">Pembayaran Berhasil!</p>
               </div>
             )}
 
             {order.status === "expired" && (
-              <div className="mx-6 mb-6 rounded-[1.25rem] border border-red-200 bg-red-50 px-5 py-4 text-center">
-                <p className="text-sm font-bold text-red-600">QR sudah kadaluarsa · 5 menit telah berlalu</p>
+              <div className="mx-6 mb-6 rounded-2xl border border-rose-500/30 bg-rose-500/10 px-5 py-4 text-center">
+                <p className="text-sm font-extrabold text-rose-400">QR sudah kadaluarsa · 5 menit telah berlalu</p>
               </div>
             )}
 
             {order.status === "cancelled" && (
-              <div className="mx-6 mb-6 rounded-[1.25rem] border border-gray-200 bg-gray-100 px-5 py-4 text-center">
-                <p className="text-sm font-bold text-gray-700">Transaksi Dibatalkan</p>
+              <div className="mx-6 mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 px-5 py-4 text-center">
+                <p className="text-sm font-extrabold text-slate-400">Transaksi Dibatalkan</p>
               </div>
             )}
           </div>
 
-          {/* Tombol Batalkan Pembayaran */}
           {isActive && (
             <button
               onClick={handleCancelOrder}
               disabled={cancelling}
-              className="flex w-full items-center justify-center gap-2 rounded-[1.5rem] border border-red-200 bg-red-50/90 py-3.5 text-xs font-bold text-red-600 shadow-sm transition-all hover:bg-red-100 active:scale-95 disabled:pointer-events-none disabled:opacity-50"
+              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-rose-500/30 bg-rose-500/10 py-3.5 text-xs font-extrabold text-rose-400 transition-all hover:bg-rose-500/20 active:scale-95 disabled:pointer-events-none disabled:opacity-50"
             >
               {cancelling ? (
                 <>
-                  <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                  <svg className="h-4 w-4 animate-spin text-rose-400" viewBox="0 0 24 24" fill="none">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z" />
                   </svg>
-                  Membatalkan...
+                  <span>Membatalkan...</span>
                 </>
               ) : (
                 <>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
-                  Batalkan Pembayaran
+                  <span>Batalkan Pembayaran</span>
                 </>
               )}
             </button>
@@ -498,7 +500,7 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
 
           <button
             onClick={reset}
-            className="flex w-full items-center justify-center gap-2 rounded-[1.5rem] border border-gray-200/80 bg-white/60 py-3.5 text-sm font-bold text-gray-700 shadow-sm backdrop-blur-md transition-all hover:bg-white hover:shadow-md active:scale-[0.98]"
+            className="flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-800/80 bg-slate-900/60 py-3.5 text-sm font-extrabold text-slate-200 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-slate-700 hover:bg-slate-800 active:scale-95"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 5v14M5 12h14" />
@@ -511,18 +513,18 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
   }
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 space-y-6 rounded-[2rem] border border-white/60 bg-white/50 p-7 shadow-[0_8px_40px_rgb(0,0,0,0.03)] backdrop-blur-xl duration-500">
+    <div className="animate-in fade-in slide-in-from-bottom-4 space-y-6 rounded-3xl border border-slate-800/80 bg-slate-900/50 p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 duration-500">
       <div>
-        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">
+        <label className="mb-2 block text-xs font-extrabold uppercase tracking-wider text-slate-400">
           QRIS Yang Digunakan
         </label>
         <select
           value={selectedId}
           onChange={(e) => setSelectedId(e.target.value)}
-          className="w-full rounded-[1.25rem] border border-gray-200/80 bg-white/60 px-4 py-3.5 text-sm font-bold text-gray-800 shadow-inner backdrop-blur-sm transition-all focus:border-indigo-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-400/10"
+          className="w-full rounded-2xl border border-slate-800/80 bg-slate-950/80 px-4 py-3.5 text-sm font-extrabold text-slate-100 shadow-inner backdrop-blur-xl transition-all duration-300 focus:border-emerald-500/80 focus:outline-none focus:ring-4 focus:ring-emerald-500/15 hover:border-slate-700/80"
         >
           {list.map((q) => (
-            <option key={q.id} value={q.id}>
+            <option key={q.id} value={q.id} className="bg-slate-900 text-slate-100">
               {q.merchantName} — {ISSUER_NAMES[q.issuer] ?? q.issuer}{q.isDefault ? " (Default)" : ""}
             </option>
           ))}
@@ -530,35 +532,35 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
       </div>
 
       <div>
-        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Nominal</label>
+        <label className="mb-2 block text-xs font-extrabold uppercase tracking-wider text-slate-400">Nominal</label>
         <div className="relative">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-400">Rp</span>
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-extrabold text-slate-500">Rp</span>
           <input
             type="text"
             inputMode="numeric"
             value={amount}
             onChange={(e) => setAmount(formatAmt(e.target.value))}
             placeholder="50.000"
-            className="w-full rounded-[1.25rem] border border-gray-200/80 bg-white/60 py-4 pl-12 pr-4 text-base font-black text-gray-900 shadow-inner backdrop-blur-sm transition-all focus:border-indigo-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-400/10 placeholder:font-medium placeholder:text-gray-300"
+            className="w-full rounded-2xl border border-slate-800/80 bg-slate-950/60 py-4 pl-12 pr-4 text-base font-black text-slate-100 shadow-inner backdrop-blur-xl transition-all duration-300 focus:border-emerald-500/80 focus:outline-none focus:ring-4 focus:ring-emerald-500/15 placeholder:font-medium placeholder:text-slate-600 hover:border-slate-700/80"
           />
         </div>
       </div>
 
       <div>
-        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">
-          Keterangan <span className="font-medium text-gray-400">(Opsional)</span>
+        <label className="mb-2 block text-xs font-extrabold uppercase tracking-wider text-slate-400">
+          Keterangan <span className="font-medium text-slate-500">(Opsional)</span>
         </label>
         <input
           type="text"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
           placeholder="Nama pelanggan, order..."
-          className="w-full rounded-[1.25rem] border border-gray-200/80 bg-white/60 px-4 py-3.5 text-sm font-medium text-gray-800 shadow-inner backdrop-blur-sm transition-all focus:border-indigo-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-400/10"
+          className="w-full rounded-2xl border border-slate-800/80 bg-slate-950/60 px-4 py-3.5 text-sm font-medium text-slate-100 shadow-inner backdrop-blur-xl transition-all duration-300 focus:border-emerald-500/80 focus:outline-none focus:ring-4 focus:ring-emerald-500/15 placeholder:text-slate-600 hover:border-slate-700/80"
         />
       </div>
 
       {error && (
-        <div className="flex items-center gap-2 rounded-2xl border border-red-200 bg-red-50/50 px-4 py-3 text-sm font-bold text-red-600">
+        <div className="flex items-center gap-2 rounded-2xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm font-extrabold text-rose-400">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
           </svg>
@@ -569,15 +571,15 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
       <button
         onClick={handleGenerate}
         disabled={loading || !amount}
-        className="flex w-full items-center justify-center gap-2 rounded-[1.5rem] bg-gradient-to-r from-indigo-600 to-blue-600 py-4 text-sm font-bold text-white shadow-lg shadow-indigo-500/30 transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-indigo-500/40 active:scale-95 disabled:pointer-events-none disabled:opacity-60"
+        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 py-4 text-sm font-extrabold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-[1.02] hover:shadow-emerald-500/40 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60"
       >
         {loading ? (
           <>
-            <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+            <svg className="h-5 w-5 animate-spin text-slate-950" viewBox="0 0 24 24" fill="none">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z" />
             </svg>
-            Membuat QRIS...
+            <span>Membuat QRIS...</span>
           </>
         ) : (
           <>
@@ -587,21 +589,21 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
               <rect x="2" y="15" width="7" height="7" rx="1.5" />
               <path d="M15 15h2v2h-2zM19 15h2M15 19h2M19 19h2v2h-2z" />
             </svg>
-            Generate QRIS
+            <span>Generate QRIS</span>
           </>
         )}
       </button>
 
-      <div className="flex items-start gap-3 rounded-[1.25rem] border border-indigo-100 bg-indigo-50/50 p-4">
+      <div className="flex items-start gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4">
         <div className="mt-1 shrink-0">
           <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-60" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-indigo-600" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
           </span>
         </div>
-        <p className="text-[11px] font-medium leading-relaxed text-indigo-900/80">
-          Setelah QR dibuat, pembayaran <strong className="font-bold text-indigo-700">terpantau otomatis</strong>.
-          QR berlaku <strong className="font-bold text-indigo-700">5 menit</strong> · Dana langsung ke rekening merchant.
+        <p className="text-[11px] font-medium leading-relaxed text-emerald-300">
+          Setelah QR dibuat, pembayaran <strong className="font-extrabold text-emerald-400">terpantau otomatis</strong>.
+          QR berlaku <strong className="font-extrabold text-emerald-400">5 menit</strong> · Dana langsung ke rekening merchant.
         </p>
       </div>
     </div>
@@ -741,34 +743,37 @@ function QrisPageInner() {
   };
 
   const issuerColor: Record<string, string> = {
-    "ID.DANA.WWW": "text-sky-500 bg-sky-50 border-sky-200",
-    "ID.CO.SHOPEE.WWW": "text-orange-500 bg-orange-50 border-orange-200",
-    "COM.GO-JEK.WWW": "text-emerald-500 bg-emerald-50 border-emerald-200",
-    "ID.CO.QRIS.WWW": "text-indigo-500 bg-indigo-50 border-indigo-200",
-    "ID.CO.OVO.WWW": "text-violet-500 bg-violet-50 border-violet-200",
-    "ID.CO.LINKAJA.WWW": "text-red-500 bg-red-50 border-red-200",
+    "ID.DANA.WWW": "text-sky-400 bg-sky-500/10 border-sky-500/30",
+    "ID.CO.SHOPEE.WWW": "text-orange-400 bg-orange-500/10 border-orange-500/30",
+    "COM.GO-JEK.WWW": "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
+    "ID.CO.QRIS.WWW": "text-cyan-400 bg-cyan-500/10 border-cyan-500/30",
+    "ID.CO.OVO.WWW": "text-violet-400 bg-violet-500/10 border-violet-500/30",
+    "ID.CO.LINKAJA.WWW": "text-rose-400 bg-rose-500/10 border-rose-500/30",
   };
 
   const defaultQrisId = list.find((q) => q.isDefault)?.id ?? list[0]?.id ?? null;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] font-sans pb-28">
-      <div className="sticky top-0 z-20 border-b border-gray-100 bg-white/60 px-4 pb-4 pt-8 backdrop-blur-xl">
+    <div className="relative min-h-screen overflow-hidden bg-[#060812] font-sans pb-28 selection:bg-emerald-500 selection:text-slate-950">
+      <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px]"></div>
+      <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]"></div>
+
+      <div className="sticky top-0 z-20 border-b border-slate-800/80 bg-slate-950/70 px-4 pb-4 pt-8 backdrop-blur-2xl">
         <div className="mx-auto max-w-lg">
           <div className="mb-5 flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-extrabold text-gray-900">QRIS</h1>
-              <p className="mt-1 text-xs font-medium text-gray-500">
+              <h1 className="text-2xl font-black tracking-tight text-slate-100">QRIS</h1>
+              <p className="mt-1 text-xs font-semibold text-slate-400">
                 {activeTab === "list" ? "Upload & kelola QRIS statis kamu" : "Generate QRIS dinamis dengan nominal"}
               </p>
             </div>
             {activeTab === "list" && (
               <button
                 onClick={() => { setShowForm(!showForm); setError(""); setDetectMsg(null); setQrisInfo(null); }}
-                className={`rounded-[1.25rem] px-5 py-2.5 text-xs font-bold transition-all ${
+                className={`rounded-2xl px-5 py-2.5 text-xs font-extrabold transition-all duration-300 active:scale-95 ${
                   showForm 
-                  ? "bg-gray-100 text-gray-600 hover:bg-gray-200" 
-                  : "bg-indigo-600 text-white shadow-md shadow-indigo-500/20 hover:bg-indigo-700"
+                  ? "bg-slate-800/80 text-slate-300 border border-slate-700 hover:bg-slate-800" 
+                  : "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 shadow-lg shadow-emerald-500/20"
                 }`}
               >
                 {showForm ? "✕ Batal" : "+ Upload QRIS"}
@@ -776,15 +781,15 @@ function QrisPageInner() {
             )}
           </div>
 
-          <div className="flex gap-1.5 rounded-[1.25rem] border border-white/60 bg-white/40 p-1.5 shadow-sm backdrop-blur-md">
+          <div className="flex gap-1.5 rounded-3xl border border-slate-800/80 bg-slate-950/70 p-1.5 shadow-lg backdrop-blur-2xl">
             {(["list", "generate"] as const).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`flex flex-1 items-center justify-center gap-2 rounded-2xl py-2.5 text-xs font-bold transition-all duration-300 ${
+                className={`flex flex-1 items-center justify-center gap-2 rounded-2xl py-2.5 text-xs font-extrabold transition-all duration-300 ${
                   activeTab === tab
-                    ? "bg-white text-indigo-600 shadow-sm border border-white"
-                    : "text-gray-500 hover:bg-white/50 hover:text-gray-700"
+                    ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 shadow-md shadow-emerald-500/20"
+                    : "text-slate-400 hover:bg-slate-900 hover:text-slate-200"
                 }`}
               >
                 {tab === "list" ? "QRIS Saya" : "Generate"}
@@ -800,12 +805,12 @@ function QrisPageInner() {
         {activeTab === "list" && (
           <>
             {showForm && (
-              <div className="animate-in fade-in slide-in-from-top-4 space-y-6 rounded-[2rem] border border-white/60 bg-white/50 p-7 shadow-[0_8px_40px_rgb(0,0,0,0.03)] backdrop-blur-xl duration-500">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-700">Upload Gambar QRIS</h3>
+              <div className="animate-in fade-in slide-in-from-top-4 space-y-6 rounded-3xl border border-slate-800/80 bg-slate-900/50 p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 duration-500">
+                <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-200">Upload Gambar QRIS</h3>
                 <div
                   ref={dropRef}
-                  className={`relative flex min-h-[160px] cursor-pointer flex-col items-center justify-center rounded-[1.5rem] border-2 border-dashed p-6 text-center transition-all ${
-                    dragging ? "border-indigo-400 bg-indigo-50/50" : "border-gray-300 bg-white/60 hover:bg-gray-50/80"
+                  className={`relative flex min-h-[160px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed p-6 text-center transition-all duration-300 ${
+                    dragging ? "border-emerald-400 bg-emerald-500/10" : "border-slate-800 bg-slate-950/40 hover:border-slate-700 hover:bg-slate-950/60"
                   }`}
                   onClick={() => fileRef.current?.click()}
                   onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
@@ -816,32 +821,32 @@ function QrisPageInner() {
                     onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); e.target.value = ""; }} />
                   {previewUrl ? (
                     <div className="flex flex-col items-center gap-3">
-                      <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-white p-2 shadow-sm">
+                      <div className="relative overflow-hidden rounded-xl border border-slate-700 bg-slate-950 p-2 shadow-xl">
                         <img src={previewUrl} alt="preview" className="h-28 w-28 rounded-lg object-contain" />
                         {detecting && (
-                          <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm">
-                            <svg className="h-8 w-8 animate-spin text-indigo-600" viewBox="0 0 24 24" fill="none">
+                          <div className="absolute inset-0 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm">
+                            <svg className="h-8 w-8 animate-spin text-emerald-400" viewBox="0 0 24 24" fill="none">
                               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z" />
                             </svg>
                           </div>
                         )}
                       </div>
-                      <p className="text-xs font-bold text-indigo-600">Klik untuk ganti gambar</p>
+                      <p className="text-xs font-extrabold text-emerald-400">Klik untuk ganti gambar</p>
                     </div>
                   ) : (
                     <>
-                      <p className="text-sm font-bold text-gray-700">
+                      <p className="text-sm font-extrabold text-slate-200">
                         {dragging ? "Lepas gambar di sini" : "Drag & drop gambar QRIS"}
                       </p>
-                      <p className="mt-1 text-xs font-medium text-gray-500">atau klik untuk pilih file</p>
+                      <p className="mt-1 text-xs font-semibold text-slate-400">atau klik untuk pilih file</p>
                     </>
                   )}
                 </div>
 
                 {detectMsg && (
-                  <div className={`flex items-start gap-2 rounded-2xl border px-4 py-3 text-sm font-bold ${
-                    detectMsg.startsWith("✓") ? "border-emerald-200 bg-emerald-50/50 text-emerald-600" : "border-amber-200 bg-amber-50/50 text-amber-600"
+                  <div className={`flex items-start gap-2 rounded-2xl border px-4 py-3 text-sm font-extrabold ${
+                    detectMsg.startsWith("✓") ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400" : "border-amber-500/30 bg-amber-500/10 text-amber-400"
                   }`}>
                     {detectMsg}
                   </div>
@@ -851,9 +856,9 @@ function QrisPageInner() {
 
                 {qrisString && (
                   <div>
-                    <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">String QRIS Terdeteksi</label>
-                    <div className="rounded-[1.25rem] border border-gray-200 bg-gray-50/80 p-4 shadow-inner">
-                      <p className="break-all font-mono text-[10px] leading-loose text-gray-600">
+                    <label className="mb-2 block text-xs font-extrabold uppercase tracking-wider text-slate-400">String QRIS Terdeteksi</label>
+                    <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4 shadow-inner">
+                      <p className="break-all font-mono text-[10px] leading-relaxed text-emerald-400">
                         {qrisString.slice(0, 120)}{qrisString.length > 120 ? "..." : ""}
                       </p>
                     </div>
@@ -861,7 +866,7 @@ function QrisPageInner() {
                 )}
 
                 <div>
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">
+                  <label className="mb-2 block text-xs font-extrabold uppercase tracking-wider text-slate-400">
                     Edit Manual
                   </label>
                   <textarea
@@ -869,18 +874,18 @@ function QrisPageInner() {
                     onChange={(e) => setQrisString(e.target.value)}
                     rows={3}
                     placeholder="String otomatis muncul, atau paste manual..."
-                    className="w-full resize-none rounded-[1.25rem] border border-gray-200/80 bg-white/60 px-4 py-4 font-mono text-xs text-gray-700 shadow-inner backdrop-blur-sm transition-all focus:border-indigo-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-400/10"
+                    className="w-full resize-none rounded-2xl border border-slate-800/80 bg-slate-950/60 px-4 py-4 font-mono text-xs text-slate-200 shadow-inner backdrop-blur-xl transition-all duration-300 focus:border-emerald-500/80 focus:outline-none focus:ring-4 focus:ring-emerald-500/15 hover:border-slate-700/80 placeholder:text-slate-600"
                   />
                 </div>
 
                 {error && (
-                  <div className="flex items-center gap-2 rounded-2xl border border-red-200 bg-red-50/50 px-4 py-3 text-sm font-bold text-red-600">
+                  <div className="flex items-center gap-2 rounded-2xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm font-extrabold text-rose-400">
                     {error}
                   </div>
                 )}
 
                 <button onClick={handleSave} disabled={saving || !qrisString.trim()}
-                  className="flex w-full items-center justify-center gap-2 rounded-[1.5rem] bg-gradient-to-r from-indigo-600 to-blue-600 py-4 text-sm font-bold text-white shadow-lg shadow-indigo-500/30 transition-all hover:scale-[1.02] active:scale-95 disabled:pointer-events-none disabled:opacity-60">
+                  className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 py-4 text-sm font-extrabold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60">
                   {saving ? "Menyimpan..." : "Simpan QRIS"}
                 </button>
               </div>
@@ -888,23 +893,23 @@ function QrisPageInner() {
 
             {loading ? (
               <div className="space-y-4">
-                {[1, 2].map((i) => <div key={i} className="h-32 w-full animate-pulse rounded-[2rem] bg-gray-200/50" />)}
+                {[1, 2].map((i) => <div key={i} className="h-32 w-full animate-pulse rounded-3xl bg-slate-900/40 border border-slate-800/50" />)}
               </div>
             ) : list.length === 0 && !showForm ? (
-              <div className="rounded-[2rem] border border-white/60 bg-white/50 px-6 py-16 text-center shadow-sm backdrop-blur-xl">
-                <p className="text-lg font-bold text-gray-900">Belum ada QRIS</p>
+              <div className="rounded-3xl border border-slate-800/80 bg-slate-900/50 px-6 py-16 text-center shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
+                <p className="text-lg font-extrabold text-slate-100">Belum ada QRIS</p>
                 <button onClick={() => setShowForm(true)}
-                  className="mt-6 rounded-[1.5rem] bg-indigo-600 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-indigo-500/30">
+                  className="mt-6 rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 px-8 py-3.5 text-sm font-extrabold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95">
                   Upload QRIS Pertama
                 </button>
               </div>
             ) : (
               <div className="space-y-4">
                 {list.map((item) => {
-                  const theme = issuerColor[item.issuer] ?? "text-gray-500 bg-gray-50 border-gray-200";
+                  const theme = issuerColor[item.issuer] ?? "text-slate-400 bg-slate-500/10 border-slate-500/30";
                   const name = ISSUER_NAMES[item.issuer] ?? item.issuer;
                   return (
-                    <div key={item.id} className="rounded-[2rem] border border-white/60 bg-white/50 p-6 shadow-[0_8px_40px_rgb(0,0,0,0.03)] backdrop-blur-xl">
+                    <div key={item.id} className="group rounded-3xl border border-slate-800/80 bg-slate-900/50 p-6 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 transition-all duration-300 hover:border-slate-700">
                       <div className="mb-5 flex items-start justify-between">
                         <div className="flex items-center gap-4">
                           <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-sm font-black ${theme}`}>
@@ -912,26 +917,26 @@ function QrisPageInner() {
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
-                              <p className="text-base font-extrabold text-gray-900">{item.merchantName}</p>
+                              <p className="text-base font-black text-slate-100">{item.merchantName}</p>
                               {item.isDefault && (
-                                <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-600">
+                                <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-400">
                                   Default
                                 </span>
                               )}
                             </div>
-                            <p className="mt-0.5 text-xs font-semibold text-gray-400">{name}</p>
+                            <p className="mt-0.5 text-xs font-semibold text-slate-400">{name}</p>
                           </div>
                         </div>
                       </div>
                       <div className="flex gap-3">
                         {!item.isDefault && (
                           <button onClick={() => handleSetDefault(item.id)}
-                            className="flex-1 rounded-[1.25rem] border border-indigo-200 bg-indigo-50 py-3 text-xs font-bold text-indigo-700 transition-all hover:bg-indigo-100">
+                            className="flex-1 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 py-3 text-xs font-extrabold text-emerald-400 transition-all hover:bg-emerald-500/20 active:scale-95">
                             Jadikan Default
                           </button>
                         )}
                         <button onClick={() => handleDelete(item.id)}
-                          className="flex-1 rounded-[1.25rem] border border-red-200 bg-red-50 py-3 text-xs font-bold text-red-600 transition-all hover:bg-red-100">
+                          className="flex-1 rounded-2xl border border-rose-500/30 bg-rose-500/10 py-3 text-xs font-extrabold text-rose-400 transition-all hover:bg-rose-500/20 active:scale-95">
                           Hapus
                         </button>
                       </div>
