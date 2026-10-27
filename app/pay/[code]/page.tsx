@@ -68,19 +68,33 @@ export default function PaymentPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-100">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+      <div className="relative flex min-h-screen items-center justify-center bg-[#060812]">
+        <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
+        <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
+        <div className="relative z-10 flex flex-col items-center gap-3">
+          <div className="h-10 w-10 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent shadow-lg shadow-emerald-500/20" />
+          <p className="text-xs font-semibold text-slate-400 animate-pulse">Memuat pembayaran...</p>
+        </div>
       </div>
     );
   }
 
   if (!order) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-slate-100 px-4 text-center">
-        <p className="text-base font-bold text-slate-800">Transaksi Tidak Ditemukan</p>
-        <button onClick={() => router.back()} className="mt-4 rounded-xl bg-white px-5 py-2 text-xs font-bold text-slate-600 border border-slate-200">
-          ← Kembali
-        </button>
+      <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#060812] px-4 text-center">
+        <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-rose-500/10 blur-[120px]" />
+        <div className="relative z-10 w-full max-w-sm rounded-3xl border border-slate-800/80 bg-slate-900/50 p-8 shadow-2xl backdrop-blur-2xl ring-1 ring-white/10">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-rose-500/20 bg-rose-500/10 text-rose-400">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+            </svg>
+          </div>
+          <p className="text-base font-bold text-slate-100">Transaksi Tidak Ditemukan</p>
+          <p className="mt-1 text-xs text-slate-400">Kode transaksi tidak valid atau telah dihapus.</p>
+          <button onClick={() => router.back()} className="mt-6 w-full rounded-2xl border border-slate-700/60 bg-slate-800/60 px-5 py-3 text-xs font-extrabold text-slate-200 transition-all hover:bg-slate-800 hover:text-white active:scale-95">
+            ← Kembali
+          </button>
+        </div>
       </div>
     );
   }
@@ -90,26 +104,38 @@ export default function PaymentPage() {
   const isActive = !["paid", "expired", "cancelled"].includes(order.status);
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-slate-100 px-4 py-8">
-      <div className="w-full max-w-sm">
-        
-        <button onClick={() => router.back()} className="mb-4 inline-flex items-center gap-2 rounded-xl bg-white/80 px-4 py-2 text-xs font-bold text-slate-700 border border-slate-200 shadow-sm backdrop-blur-md">
-          ← Kembali
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#060812] px-5 py-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
+      <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
+      <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-indigo-500/5 blur-[140px]" />
+
+      <div className="relative z-10 w-full max-w-sm">
+        <button onClick={() => router.back()} className="group mb-5 inline-flex items-center gap-2 rounded-2xl border border-slate-800/80 bg-slate-900/60 px-4 py-2.5 text-xs font-extrabold text-slate-300 shadow-xl backdrop-blur-xl transition-all duration-300 hover:border-slate-700 hover:text-white hover:bg-slate-800/80 active:scale-95">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:-translate-x-1">
+            <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+          </svg>
+          Kembali
         </button>
 
-        <div className="overflow-hidden rounded-3xl border border-white bg-white/80 p-6 shadow-xl shadow-slate-200/60 backdrop-blur-xl">
-          
-          <div className="text-center border-b border-slate-100 pb-5">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Total Tagihan</span>
-            <h1 className="text-3xl font-black text-slate-900 mt-1">{formatRupiah(order.totalAmount)}</h1>
-            <p className="text-xs font-medium text-slate-500 mt-1">{order.merchantName}</p>
+        <div className="relative overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/50 p-6 shadow-[0_0_50px_-12px_rgba(16,185,129,0.12)] backdrop-blur-2xl ring-1 ring-white/10 transition-all duration-300">
+          <div className="text-center border-b border-slate-800/60 pb-5">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Total Tagihan</span>
+            <h1 className="text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 mt-1">
+              {formatRupiah(order.totalAmount)}
+            </h1>
+            <p className="text-xs font-semibold text-slate-400 mt-1">{order.merchantName}</p>
           </div>
 
           {order.status === "paid" && (
-            <div className="py-6 text-center">
-              <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 font-bold text-2xl">✓</div>
-              <h2 className="text-lg font-bold text-emerald-600">Pembayaran Berhasil</h2>
-              <p className="text-xs text-slate-400 mt-1">{formatDate(order.createdAt)}</p>
+            <div className="py-6 text-center animate-in fade-in zoom-in duration-300">
+              <div className="relative mx-auto mb-3 flex h-16 w-16 items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-emerald-500/20 animate-ping duration-1000" />
+                <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-slate-950 font-black text-2xl shadow-lg shadow-emerald-500/30">
+                  ✓
+                </div>
+              </div>
+              <h2 className="text-lg font-extrabold text-emerald-400">Pembayaran Berhasil</h2>
+              <p className="text-xs font-medium text-slate-400 mt-1">{formatDate(order.createdAt)}</p>
             </div>
           )}
 
@@ -117,38 +143,48 @@ export default function PaymentPage() {
             <div className="py-5 space-y-4">
               <div className="flex justify-center">
                 {qrDataUrl ? (
-                  <div className="rounded-2xl border border-slate-100 bg-white p-3 shadow-md">
+                  <div className="group relative rounded-2xl bg-white p-4 shadow-2xl ring-4 ring-emerald-500/20 transition-all duration-300 hover:scale-[1.02]">
                     <img src={qrDataUrl} alt="QRIS" width={200} height={200} className="block rounded-lg" />
                   </div>
                 ) : (
-                  <div className="h-48 w-48 animate-pulse rounded-2xl bg-slate-100" />
+                  <div className="h-52 w-52 animate-pulse rounded-2xl bg-slate-800/60 border border-slate-700/50" />
                 )}
               </div>
 
               {remaining > 0 && (
-                <div className="rounded-2xl bg-slate-50 p-3 text-center border border-slate-100">
-                  <p className="text-[10px] font-bold uppercase text-slate-400">Sisa Waktu Pembayaran</p>
-                  <p className="font-mono text-base font-black text-indigo-600 mt-0.5">{minutes}:{seconds.toString().padStart(2, "0")}</p>
+                <div className="rounded-2xl bg-slate-950/60 p-3.5 text-center border border-slate-800/80 backdrop-blur-md">
+                  <p className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Sisa Waktu Pembayaran</p>
+                  <p className="font-mono text-lg font-black text-emerald-400 mt-0.5 tracking-wider animate-pulse">
+                    {minutes}:{seconds.toString().padStart(2, "0")}
+                  </p>
                 </div>
               )}
             </div>
           )}
 
-          {/* Detailed Rows */}
-          <div className="mt-2 divide-y divide-slate-100 rounded-2xl border border-slate-100 bg-slate-50/50">
-            <div className="flex justify-between px-4 py-2.5 text-xs"><span className="text-slate-400 font-medium">Kode</span><span className="font-mono font-bold text-slate-800">{order.code}</span></div>
-            <div className="flex justify-between px-4 py-2.5 text-xs"><span className="text-slate-400 font-medium">Tanggal</span><span className="font-semibold text-slate-700">{formatDate(order.createdAt)}</span></div>
-            <div className="flex justify-between px-4 py-2.5 text-xs"><span className="text-slate-400 font-medium">Nominal</span><span className="font-semibold text-slate-700">{formatRupiah(order.amount)}</span></div>
-            {order.feeAmount > 0 && <div className="flex justify-between px-4 py-2.5 text-xs"><span className="text-slate-400 font-medium">Biaya</span><span className="font-semibold text-slate-700">{formatRupiah(order.feeAmount)}</span></div>}
-            {order.description && <div className="flex justify-between px-4 py-2.5 text-xs"><span className="text-slate-400 font-medium">Ket</span><span className="font-semibold text-slate-700">{order.description}</span></div>}
+          <div className="mt-2 divide-y divide-slate-800/60 rounded-2xl border border-slate-800/80 bg-slate-950/40 backdrop-blur-md">
+            <div className="flex justify-between px-4 py-3 text-xs"><span className="text-slate-400 font-medium">Kode</span><span className="font-mono font-bold text-slate-200">{order.code}</span></div>
+            <div className="flex justify-between px-4 py-3 text-xs"><span className="text-slate-400 font-medium">Tanggal</span><span className="font-semibold text-slate-300">{formatDate(order.createdAt)}</span></div>
+            <div className="flex justify-between px-4 py-3 text-xs"><span className="text-slate-400 font-medium">Nominal</span><span className="font-semibold text-slate-200">{formatRupiah(order.amount)}</span></div>
+            {order.feeAmount > 0 && <div className="flex justify-between px-4 py-3 text-xs"><span className="text-slate-400 font-medium">Biaya</span><span className="font-semibold text-slate-200">{formatRupiah(order.feeAmount)}</span></div>}
+            {order.description && <div className="flex justify-between px-4 py-3 text-xs"><span className="text-slate-400 font-medium">Ket</span><span className="font-semibold text-slate-300">{order.description}</span></div>}
           </div>
 
           {isActive && (
-            <button onClick={handleCancel} disabled={cancelling} className="mt-5 w-full rounded-2xl border border-red-200 bg-red-50 py-3 text-xs font-bold text-red-600 transition hover:bg-red-100">
-              {cancelling ? "Membatalkan..." : "Batalkan Pembayaran"}
+            <button onClick={handleCancel} disabled={cancelling} className="group relative mt-5 flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl border border-rose-500/30 bg-rose-500/10 py-3.5 text-xs font-extrabold text-rose-400 transition-all duration-300 hover:bg-rose-500/20 hover:border-rose-500/50 active:scale-95 disabled:pointer-events-none disabled:opacity-60">
+              {cancelling ? (
+                <>
+                  <svg className="animate-spin h-4 w-4 text-rose-400" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z"/>
+                  </svg>
+                  <span>Membatalkan...</span>
+                </>
+              ) : (
+                <span>Batalkan Pembayaran</span>
+              )}
             </button>
           )}
-
         </div>
       </div>
     </div>
