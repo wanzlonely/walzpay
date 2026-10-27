@@ -8,12 +8,12 @@ import { formatRupiah, formatDate } from "@/lib/utils";
 import type { Order } from "@/types";
 
 const STATUS_MAP: Record<string, { label: string; text: string; bg: string; border: string }> = {
-  paid: { label: "Lunas", text: "text-emerald-700", bg: "bg-emerald-100", border: "border-emerald-200" },
-  awaiting_confirmation: { label: "Konfirmasi", text: "text-amber-700", bg: "bg-amber-100", border: "border-amber-200" },
-  expired: { label: "Expired", text: "text-red-700", bg: "bg-red-100", border: "border-red-200" },
-  awaiting_payment: { label: "Menunggu", text: "text-indigo-700", bg: "bg-indigo-100", border: "border-indigo-200" },
-  pending: { label: "Pending", text: "text-gray-700", bg: "bg-gray-100", border: "border-gray-200" },
-  cancelled: { label: "Batal", text: "text-gray-700", bg: "bg-gray-100", border: "border-gray-200" },
+  paid: { label: "Lunas", text: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
+  awaiting_confirmation: { label: "Konfirmasi", text: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+  expired: { label: "Expired", text: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20" },
+  awaiting_payment: { label: "Menunggu", text: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+  pending: { label: "Pending", text: "text-slate-400", bg: "bg-slate-500/10", border: "border-slate-500/20" },
+  cancelled: { label: "Batal", text: "text-slate-400", bg: "bg-slate-500/10", border: "border-slate-500/20" },
 };
 
 const FILTERS: { key: string; label: string }[] = [
@@ -62,19 +62,19 @@ export default function TransaksiPage() {
   const totalPending = orders.filter((o) => ["awaiting_payment", "awaiting_confirmation", "pending"].includes(o.status)).length;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] font-sans pb-28">
-      <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-indigo-200/30 blur-[80px]"></div>
-      <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-blue-200/30 blur-[80px]"></div>
+    <div className="relative min-h-screen overflow-hidden bg-[#060812] font-sans pb-28 selection:bg-emerald-500 selection:text-slate-950">
+      <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px]"></div>
+      <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]"></div>
 
-      <div className="sticky top-0 z-20 border-b border-gray-100 bg-white/60 px-4 pb-4 pt-8 backdrop-blur-xl">
+      <div className="sticky top-0 z-20 border-b border-slate-800/80 bg-slate-950/70 px-4 pb-4 pt-8 backdrop-blur-2xl">
         <div className="mx-auto max-w-lg">
           <div className="mb-4 flex items-center justify-between">
-            <h1 className="text-2xl font-extrabold text-gray-900">Transaksi</h1>
+            <h1 className="text-2xl font-black tracking-tight text-slate-100">Transaksi</h1>
             <button
               onClick={load}
-              className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white/80 px-3.5 py-2 text-xs font-bold text-gray-600 shadow-sm transition-all hover:bg-gray-50 active:scale-95"
+              className="group flex items-center gap-1.5 rounded-2xl border border-slate-800/80 bg-slate-900/60 px-3.5 py-2 text-xs font-bold text-slate-300 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-slate-700 hover:bg-slate-800 hover:text-white active:scale-95"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-500 group-hover:rotate-180">
                 <polyline points="23 4 23 10 17 10" />
                 <polyline points="1 20 1 14 7 14" />
                 <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
@@ -93,7 +93,7 @@ export default function TransaksiPage() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
             >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -103,7 +103,7 @@ export default function TransaksiPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Cari kode, keterangan..."
-              className="w-full rounded-[1.25rem] border border-gray-200/80 bg-white/60 py-3 pl-11 pr-4 text-sm font-medium text-gray-800 shadow-inner backdrop-blur-sm transition-all focus:border-indigo-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-400/10 placeholder:text-gray-400"
+              className="w-full rounded-2xl border border-slate-800/80 bg-slate-950/60 py-3 pl-11 pr-4 text-sm font-medium text-slate-100 shadow-inner backdrop-blur-xl transition-all duration-300 focus:border-emerald-500/80 focus:outline-none focus:ring-4 focus:ring-emerald-500/15 placeholder:text-slate-500 hover:border-slate-700/80"
             />
           </div>
 
@@ -112,10 +112,10 @@ export default function TransaksiPage() {
               <button
                 key={f.key}
                 onClick={() => setFilter(f.key)}
-                className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold transition-all duration-300 ${
+                className={`shrink-0 rounded-full px-4 py-2 text-xs font-extrabold transition-all duration-300 ${
                   filter === f.key
-                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20 border border-indigo-600"
-                    : "bg-white/60 text-gray-500 border border-gray-200/80 hover:bg-white hover:text-gray-700"
+                    ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 shadow-lg shadow-emerald-500/20"
+                    : "bg-slate-900/60 text-slate-400 border border-slate-800/80 hover:bg-slate-800 hover:text-slate-200"
                 }`}
               >
                 {f.label}
@@ -127,25 +127,25 @@ export default function TransaksiPage() {
 
       <div className="relative z-10 mx-auto max-w-lg space-y-5 px-4 pt-6">
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-[1.5rem] border border-emerald-100 bg-emerald-50/50 p-5 shadow-sm backdrop-blur-md">
-            <p className="text-xs font-bold uppercase tracking-wider text-emerald-600/80 mb-1">Total Diterima</p>
-            <p className="text-xl font-black text-emerald-700">{formatRupiah(totalPaid)}</p>
+          <div className="rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-5 shadow-lg backdrop-blur-xl">
+            <p className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-400/80 mb-1">Total Diterima</p>
+            <p className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">{formatRupiah(totalPaid)}</p>
           </div>
-          <div className="rounded-[1.5rem] border border-amber-100 bg-amber-50/50 p-5 shadow-sm backdrop-blur-md">
-            <p className="text-xs font-bold uppercase tracking-wider text-amber-600/80 mb-1">Pending</p>
-            <p className="text-xl font-black text-amber-700">{totalPending} Order</p>
+          <div className="rounded-3xl border border-amber-500/20 bg-amber-500/5 p-5 shadow-lg backdrop-blur-xl">
+            <p className="text-[10px] font-extrabold uppercase tracking-widest text-amber-400/80 mb-1">Pending</p>
+            <p className="text-xl font-black text-amber-400">{totalPending} Order</p>
           </div>
         </div>
 
         {loading ? (
           <div className="space-y-3">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-20 w-full animate-pulse rounded-[1.5rem] bg-gray-200/50" />
+              <div key={i} className="h-20 w-full animate-pulse rounded-3xl bg-slate-900/40 border border-slate-800/50" />
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="rounded-[2rem] border border-white/60 bg-white/50 px-6 py-16 text-center shadow-sm backdrop-blur-xl">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-gray-100 bg-gray-50 text-gray-400">
+          <div className="rounded-3xl border border-slate-800/80 bg-slate-900/40 px-6 py-16 text-center shadow-xl backdrop-blur-2xl">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-800 bg-slate-950 text-slate-500">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
                 <polyline points="14 2 14 8 20 8" />
@@ -153,11 +153,11 @@ export default function TransaksiPage() {
                 <line x1="16" y1="17" x2="8" y2="17" />
               </svg>
             </div>
-            <p className="text-base font-bold text-gray-800">
+            <p className="text-base font-bold text-slate-200">
               {search ? `Tidak ada hasil untuk "${search}"` : "Belum ada transaksi"}
             </p>
             {!search && (
-              <Link href="/qris?tab=generate" className="mt-3 inline-block text-xs font-bold text-indigo-600 hover:underline">
+              <Link href="/qris?tab=generate" className="mt-3 inline-block text-xs font-extrabold text-emerald-400 hover:text-emerald-300 hover:underline transition-colors">
                 Generate QRIS pertama →
               </Link>
             )}
@@ -170,9 +170,9 @@ export default function TransaksiPage() {
                 <Link
                   key={order.id}
                   href={`/pay/${order.code}`}
-                  className="flex items-center gap-4 rounded-[1.5rem] border border-white/60 bg-white/50 p-4 shadow-[0_4px_20px_rgb(0,0,0,0.02)] backdrop-blur-md transition-all hover:scale-[1.01] hover:bg-white hover:shadow-md"
+                  className="group flex items-center gap-4 rounded-3xl border border-slate-800/80 bg-slate-900/50 p-4 shadow-lg backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-slate-700 hover:bg-slate-800/60"
                 >
-                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border ${s.bg} ${s.border}`}>
+                  <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border ${s.bg} ${s.border}`}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={s.text}>
                       {order.status === "paid" ? (
                         <polyline points="20 6 9 17 4 12" />
@@ -192,20 +192,20 @@ export default function TransaksiPage() {
 
                   <div className="min-w-0 flex-1">
                     <div className="mb-1 flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-indigo-600">{order.code}</span>
-                      <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-bold ${s.bg} ${s.text} ${s.border}`}>
+                      <span className="font-mono text-xs font-extrabold text-emerald-400">{order.code}</span>
+                      <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-extrabold ${s.bg} ${s.text} ${s.border}`}>
                         {s.label}
                       </span>
                     </div>
-                    <p className="truncate text-xs font-semibold text-gray-700">
+                    <p className="truncate text-xs font-semibold text-slate-300">
                       {order.description || order.merchantName || "—"}
                     </p>
-                    <p className="mt-0.5 text-[10px] font-medium text-gray-400">{formatDate(order.createdAt)}</p>
+                    <p className="mt-0.5 text-[10px] font-medium text-slate-500">{formatDate(order.createdAt)}</p>
                   </div>
 
                   <div className="shrink-0 text-right">
-                    <p className="text-sm font-black text-gray-900">{formatRupiah(order.totalAmount)}</p>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ml-auto mt-1 text-gray-400">
+                    <p className="text-sm font-black text-slate-100">{formatRupiah(order.totalAmount)}</p>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ml-auto mt-1 text-slate-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-slate-300">
                       <polyline points="9 18 15 12 9 6" />
                     </svg>
                   </div>
