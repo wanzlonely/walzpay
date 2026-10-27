@@ -61,7 +61,7 @@ export async function saveUserQris(params: {
 
 export async function getUserQrisList(userId: string): Promise<SavedQris[]> {
   const redis = getRedis();
-  const ids = await redis.lrange<string[]>(keys.userQrisList(userId), 0, -1);
+  const ids = await redis.lrange<string>(keys.userQrisList(userId), 0, -1);
   if (!ids || ids.length === 0) return [];
 
   const result: SavedQris[] = [];
