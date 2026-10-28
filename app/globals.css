@@ -1545,3 +1545,28 @@ button,a { -webkit-tap-highlight-color: transparent; }
     transition-duration: 0.01ms !important;
   }
 }
+
+.auth-page { background: #eef3ff !important; color: #202b45 !important; }
+.auth-page .auth-wrap { width: min(100% - 32px, 480px) !important; height: 100% !important; min-height: 0 !important; }
+.auth-page .auth-brand { display: inline-flex !important; flex-direction: column !important; align-items: center !important; gap: 12px !important; margin: 0 !important; font-family: 'Space Grotesk', sans-serif !important; font-size: 42px !important; letter-spacing: -.1em !important; line-height: .9 !important; }
+.auth-page .brand-mark { width: 92px !important; height: 92px !important; border-radius: 50% !important; }
+.auth-page .brand-mark img { width: 86px !important; height: 86px !important; border-radius: 50% !important; }
+.auth-page .auth-card { border: 1px solid rgba(255,255,255,.82) !important; border-radius: 30px !important; background: linear-gradient(145deg, rgba(255,255,255,.74), rgba(255,255,255,.38)) !important; box-shadow: 0 28px 80px rgba(92,112,164,.2), inset 0 1px 0 rgba(255,255,255,.96) !important; backdrop-filter: blur(30px) saturate(160%) !important; -webkit-backdrop-filter: blur(30px) saturate(160%) !important; }
+.auth-page .auth-input, .auth-page input { border-color: rgba(255,255,255,.82) !important; background: rgba(255,255,255,.42) !important; color: #25314d !important; }
+.profile-page { background: #eef3ff !important; color: #202b45 !important; }
+.profile-page::after { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(circle at 10% 8%, rgba(125,153,255,.34), transparent 30%), radial-gradient(circle at 90% 86%, rgba(117,231,220,.28), transparent 28%), radial-gradient(circle at 52% 42%, rgba(231,190,255,.2), transparent 34%); }
+.profile-page > * { position: relative; z-index: 1; }
+.profile-page header, .profile-page .glass-card { border: 1px solid rgba(255,255,255,.78) !important; background: linear-gradient(145deg, rgba(255,255,255,.74), rgba(255,255,255,.4)) !important; color: #202b45 !important; box-shadow: 0 20px 60px rgba(91,111,168,.16), inset 0 1px 0 rgba(255,255,255,.96) !important; backdrop-filter: blur(28px) saturate(160%) !important; -webkit-backdrop-filter: blur(28px) saturate(160%) !important; }
+.profile-page .text-slate-100, .profile-page .text-slate-200, .profile-page .text-slate-300 { color: #202b45 !important; }
+.profile-page .text-slate-400, .profile-page .text-slate-500 { color: #71809c !important; }
+.profile-page input, .profile-page textarea { border-color: rgba(255,255,255,.8) !important; background: rgba(255,255,255,.44) !important; color: #202b45 !important; }
+.profile-page pre, .profile-page code { color: #5365dc !important; }
+.profile-page [class*="bg-black"], .profile-page [class*="bg-[#"], .profile-page [class*="bg-white/[.0"] { background: rgba(255,255,255,.34) !important; }
+.profile-page [class*="border-white"] { border-color: rgba(255,255,255,.72) !important; }
+.profile-page button { color: #5365dc !important; }
+.profile-page .bg-gradient-to-r { background: linear-gradient(110deg, rgba(119,226,194,.86), rgba(126,150,247,.86)) !important; color: #20304d !important; }
+@media (max-width: 760px) {
+  .auth-page .auth-brand { font-size: 36px !important; transform: none !important; }
+  .auth-page .brand-mark { width: 78px !important; height: 78px !important; }
+  .auth-page .brand-mark img { width: 72px !important; height: 72px !important; }
+}
