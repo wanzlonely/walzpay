@@ -68,12 +68,12 @@ export default function PaymentPage() {
 
   if (loading) {
     return (
-      <div className="relative flex min-h-screen items-center justify-center bg-[#060812]">
-        <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
-        <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
+      <div className="relative flex min-h-screen items-center justify-center bg-[#030712]">
+        <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse-glow" />
+        <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-float-slow" />
         <div className="relative z-10 flex flex-col items-center gap-3">
           <div className="h-10 w-10 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent shadow-lg shadow-emerald-500/20" />
-          <p className="text-xs font-semibold text-slate-400 animate-pulse">Memuat pembayaran...</p>
+          <p className="text-xs font-semibold text-slate-400 animate-pulse">Memuat tagihan...</p>
         </div>
       </div>
     );
@@ -81,9 +81,9 @@ export default function PaymentPage() {
 
   if (!order) {
     return (
-      <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#060812] px-4 text-center">
+      <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#030712] px-4 text-center">
         <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-rose-500/10 blur-[120px]" />
-        <div className="relative z-10 w-full max-w-sm rounded-3xl border border-slate-800/80 bg-slate-900/50 p-8 shadow-2xl backdrop-blur-2xl ring-1 ring-white/10">
+        <div className="glass-card relative z-10 w-full max-w-sm rounded-3xl p-8 shadow-2xl ring-1 ring-white/10">
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-rose-500/20 bg-rose-500/10 text-rose-400">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
@@ -104,9 +104,9 @@ export default function PaymentPage() {
   const isActive = !["paid", "expired", "cancelled"].includes(order.status);
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#060812] px-5 py-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
-      <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#030712] px-5 py-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
+      <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse-glow" />
+      <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-float-slow" />
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-indigo-500/5 blur-[140px]" />
 
       <div className="relative z-10 w-full max-w-sm">
@@ -117,7 +117,7 @@ export default function PaymentPage() {
           Kembali
         </button>
 
-        <div className="relative overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/50 p-6 shadow-[0_0_50px_-12px_rgba(16,185,129,0.12)] backdrop-blur-2xl ring-1 ring-white/10 transition-all duration-300">
+        <div className="glass-card glass-card-hover relative rounded-3xl p-6 shadow-2xl ring-1 ring-white/10 transition-all duration-300">
           <div className="text-center border-b border-slate-800/60 pb-5">
             <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Total Tagihan</span>
             <h1 className="text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 mt-1">
