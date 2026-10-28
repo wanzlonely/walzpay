@@ -236,6 +236,15 @@ body:has(.auth-page) { overflow: hidden; }
 .app-page .border-slate-800\/80, .app-page .border-slate-800\/60, .payment-page .border-slate-800\/80, .payment-page .border-slate-800\/60 { border-color: rgba(255,255,255,.62); }
 .app-page .text-emerald-400, .payment-page .text-emerald-400 { color: #5d6ff3; }
 .app-page .text-cyan-400, .payment-page .text-cyan-400 { color: #3f9bc8; }
+@keyframes profileReveal { 0% { opacity: 0; transform: translateY(22px) scale(.985); filter: blur(8px); } 65% { opacity: 1; filter: blur(0); } 100% { transform: translateY(0) scale(1); filter: blur(0); } }
+@keyframes profilePanelIn { 0% { opacity: 0; transform: translateX(18px); } 100% { opacity: 1; transform: translateX(0); } }
+@keyframes profileGlow { 0%,100% { box-shadow: 0 20px 60px rgba(91,111,168,.16), inset 0 1px 0 rgba(255,255,255,.96); } 50% { box-shadow: 0 24px 72px rgba(103,112,225,.23), inset 0 1px 0 rgba(255,255,255,.98); } }
+.profile-shell { animation: profileReveal .72s cubic-bezier(.16,1,.3,1) both; }
+.profile-shell > div:first-child { animation: profileGlow 4.5s ease-in-out .7s infinite; }
+.profile-panel { animation: profilePanelIn .48s cubic-bezier(.16,1,.3,1) both; }
+.profile-page .profile-panel > * { animation: profilePanelIn .52s cubic-bezier(.16,1,.3,1) both; }
+.profile-page .profile-panel > *:nth-child(2) { animation-delay: .07s; }
+.profile-page .profile-panel > *:nth-child(3) { animation-delay: .14s; }
 .transactions-page h1, .qris-page h1, .profile-page h1 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -.06em; }
 .transactions-page button, .qris-page button, .profile-page button { border-color: rgba(255,255,255,.78); box-shadow: 0 10px 24px rgba(91,111,168,.1), inset 0 1px 0 rgba(255,255,255,.8); }
 .transactions-page .refresh-button, .profile-page .copy-button, .profile-page .profile-meta { background: rgba(255,255,255,.55) !important; border-color: rgba(255,255,255,.82) !important; color: #202b45 !important; box-shadow: 0 12px 26px rgba(91,111,168,.12), inset 0 1px 0 rgba(255,255,255,.94); }
