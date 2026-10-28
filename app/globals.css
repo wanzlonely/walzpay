@@ -41,7 +41,7 @@ body {
 }
 
 ::selection {
-  background: rgba(20, 184, 166, 0.25);
+  background: rgba(45, 212, 191, 0.25);
   color: #2dd4bf;
 }
 
@@ -60,7 +60,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(20, 184, 166, 0.4);
+  background: rgba(45, 212, 191, 0.4);
 }
 
 @keyframes floatOrbs {
@@ -73,6 +73,34 @@ body {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+@keyframes logoCinematic {
+  0% {
+    transform: scale(0.7) rotate(-10deg) translateY(20px);
+    opacity: 0;
+    filter: blur(12px) drop-shadow(0 0 0px rgba(45, 212, 191, 0));
+  }
+  60% {
+    transform: scale(1.06) rotate(2deg) translateY(-4px);
+    opacity: 1;
+    filter: blur(0px) drop-shadow(0 0 35px rgba(45, 212, 191, 0.6));
+  }
+  100% {
+    transform: scale(1) rotate(0deg) translateY(0);
+    opacity: 1;
+    filter: blur(0px) drop-shadow(0 0 20px rgba(45, 212, 191, 0.35));
+  }
+}
+
+@keyframes ringRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-150%) rotate(45deg); }
+  100% { transform: translateX(250%) rotate(45deg); }
+}
+
 .animate-float {
   animation: floatOrbs 8s ease-in-out infinite;
 }
@@ -81,12 +109,24 @@ body {
   animation: smoothEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.animate-logo-cinematic {
+  animation: logoCinematic 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-ring-rotate {
+  animation: ringRotate 16s linear infinite;
+}
+
+.animate-shimmer-sweep {
+  animation: shimmerSweep 3.5s ease-in-out infinite;
+}
+
 .card-squircle {
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 41, 59, 0.35) 100%);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.65) 0%, rgba(30, 41, 59, 0.4) 100%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .card-pill-button {
@@ -101,15 +141,15 @@ body {
 }
 
 .soft-input {
-  background: rgba(10, 15, 29, 0.7);
+  background: rgba(10, 15, 29, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
   transition: all 0.25s ease;
 }
 
 .soft-input:focus {
   border-color: #2dd4bf;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(45, 212, 191, 0.12);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35), 0 0 0 4px rgba(45, 212, 191, 0.14);
 }
 
 button, a {
