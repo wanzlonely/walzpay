@@ -21,7 +21,7 @@ function CopyField({ label, value, mono = false }: { label: string; value: strin
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
           }}
-          className={`shrink-0 rounded-2xl px-4 py-3.5 text-xs font-extrabold transition-all duration-300 active:scale-95 ${
+          className={`copy-button shrink-0 rounded-2xl px-4 py-3.5 text-xs font-extrabold transition-all duration-300 active:scale-95 ${
             copied
               ? "border border-emerald-500/30 bg-emerald-500/20 text-emerald-400 shadow-lg shadow-emerald-500/10"
               : "border border-slate-700/80 bg-slate-800/80 text-slate-200 hover:border-slate-600 hover:bg-slate-700 hover:text-white"
@@ -86,12 +86,12 @@ export default function ProfilePage() {
   const initials = user.name?.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase() || "?";
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#030712] px-5 pb-32 pt-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
+    <div className="app-page profile-page relative min-h-screen overflow-hidden bg-[#030712] px-5 pb-32 pt-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
       <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px]"></div>
       <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]"></div>
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-indigo-500/5 blur-[140px]" />
 
-      <div className="relative z-10 mx-auto max-w-lg space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="profile-shell relative z-10 mx-auto max-w-lg space-y-6">
         <div className="flex items-center gap-5">
           <div className="relative flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-500 text-2xl font-black text-slate-950 shadow-xl shadow-emerald-500/20 ring-1 ring-white/20">
             {initials}
@@ -99,7 +99,7 @@ export default function ProfilePage() {
           <div>
             <h1 className="text-xl font-black tracking-tight text-slate-100">{user.name}</h1>
             <p className="text-sm font-semibold text-slate-400">{user.email}</p>
-            <div className="mt-2 inline-flex items-center rounded-full border border-slate-800/80 bg-slate-900/60 px-3 py-1 text-[10px] font-extrabold tracking-wider text-slate-400 uppercase backdrop-blur-md">
+            <div className="profile-meta mt-2 inline-flex items-center rounded-full border border-slate-800/80 bg-slate-900/60 px-3 py-1 text-[10px] font-extrabold tracking-wider text-slate-400 uppercase backdrop-blur-md">
               Bergabung {user.createdAt ? new Date(user.createdAt).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" }) : "—"}
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function ProfilePage() {
         </div>
 
         {activeSection === "account" && (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300 space-y-5">
+          <div className="profile-panel space-y-5">
             <div className="glass-card glass-card-hover rounded-3xl p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-5">
               <p className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Informasi Akun</p>
               <div className="space-y-4">
@@ -156,7 +156,7 @@ export default function ProfilePage() {
         )}
 
         {activeSection === "api" && (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300 space-y-5">
+          <div className="profile-panel space-y-5">
             <div className="glass-card glass-card-hover rounded-3xl p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-6">
               <p className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Autentikasi API</p>
               <CopyField label="Kunci API Kamu" value={user.apiKey || "—"} mono />
@@ -211,7 +211,7 @@ export default function ProfilePage() {
         )}
 
         {activeSection === "docs" && (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+          <div className="profile-panel">
             <div className="glass-card glass-card-hover rounded-3xl p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-6">
               <p className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Referensi API</p>
 

@@ -8,19 +8,20 @@ import { formatRupiah, formatDate } from "@/lib/utils";
 import type { Order } from "@/types";
 
 const STATUS_MAP: Record<string, { label: string; text: string; bg: string; border: string }> = {
-  paid: { label: "Lunas", text: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
-  awaiting_confirmation: { label: "Konfirmasi", text: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-  expired: { label: "Expired", text: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20" },
-  awaiting_payment: { label: "Menunggu", text: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
-  pending: { label: "Pending", text: "text-slate-400", bg: "bg-slate-500/10", border: "border-slate-500/20" },
-  cancelled: { label: "Batal", text: "text-slate-400", bg: "bg-slate-500/10", border: "border-slate-500/20" },
+  paid: { label: "Lunas", text: "status-paid-text", bg: "status-paid-bg", border: "status-paid-border" },
+  awaiting_confirmation: { label: "Konfirmasi", text: "status-pending-text", bg: "status-pending-bg", border: "status-pending-border" },
+  expired: { label: "Expired", text: "status-expired-text", bg: "status-expired-bg", border: "status-expired-border" },
+  awaiting_payment: { label: "Menunggu", text: "status-pending-text", bg: "status-pending-bg", border: "status-pending-border" },
+  pending: { label: "Pending", text: "status-pending-text", bg: "status-pending-bg", border: "status-pending-border" },
+  cancelled: { label: "Batal", text: "status-cancelled-text", bg: "status-cancelled-bg", border: "status-cancelled-border" },
 };
 
 const FILTERS: { key: string; label: string }[] = [
   { key: "all", label: "Semua" },
   { key: "paid", label: "Lunas" },
-  { key: "awaiting_payment", label: "Menunggu" },
+  { key: "pending", label: "Menunggu" },
   { key: "expired", label: "Expired" },
+  { key: "cancelled", label: "Dibatalkan" },
 ];
 
 export default function TransaksiPage() {
@@ -45,10 +46,13 @@ export default function TransaksiPage() {
   useEffect(() => {
     if (!getUser()) { router.replace("/login"); return; }
     load();
+    const refreshTimer = window.setInterval(load, 5000);
+    return () => window.clearInterval(refreshTimer);
   }, [router, load]);
 
   const filtered = orders.filter((o) => {
-    const matchFilter = filter === "all" || o.status === filter;
+    const pendingStatuses = ["pending", "awaiting_payment", "awaiting_confirmation"];
+    const matchFilter = filter === "all" || (filter === "pending" ? pendingStatuses.includes(o.status) : o.status === filter);
     const q = search.toLowerCase();
     const matchSearch =
       !q ||
@@ -62,7 +66,7 @@ export default function TransaksiPage() {
   const totalPending = orders.filter((o) => ["awaiting_payment", "awaiting_confirmation", "pending"].includes(o.status)).length;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#030712] font-sans pb-32 text-slate-100 selection:bg-emerald-500 selection:text-slate-950">
+    <div className="app-page transactions-page relative min-h-screen overflow-hidden bg-[#030712] font-sans pb-32 text-slate-100 selection:bg-emerald-500 selection:text-slate-950">
       <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px]"></div>
       <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]"></div>
 
@@ -72,7 +76,7 @@ export default function TransaksiPage() {
             <h1 className="text-2xl font-black tracking-tight text-slate-100">Transaksi</h1>
             <button
               onClick={load}
-              className="group flex items-center gap-1.5 rounded-2xl border border-slate-800/80 bg-slate-900/80 px-3.5 py-2 text-xs font-bold text-slate-300 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-slate-800 hover:text-emerald-400 active:scale-95"
+              className="refresh-button group flex items-center gap-1.5 rounded-2xl border border-slate-800/80 bg-slate-900/80 px-3.5 py-2 text-xs font-bold text-slate-300 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-slate-800 hover:text-emerald-400 active:scale-95"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-500 group-hover:rotate-180">
                 <polyline points="23 4 23 10 17 10" />

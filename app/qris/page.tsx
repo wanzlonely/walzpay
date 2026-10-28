@@ -334,7 +334,7 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
       const res = await fetch(`/api/orders/${order.code}`, {
         method: "PATCH",
         headers: authHeaders(),
-        body: JSON.stringify({ action: "cancel" }),
+        body: JSON.stringify({ status: "cancelled" }),
       });
       const json = await res.json();
       if (json.success) {
@@ -467,8 +467,11 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
             )}
 
             {order.status === "cancelled" && (
-              <div className="mx-6 mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 px-5 py-4 text-center">
-                <p className="text-sm font-extrabold text-slate-400">Transaksi Dibatalkan</p>
+              <div className="cancelled-payment-state mx-6 mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 px-5 py-5 text-center">
+                <div className="cancelled-icon mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg></div>
+                <p className="text-base font-extrabold text-slate-700">Transaksi Dibatalkan</p>
+                <p className="mt-1 text-xs font-medium text-slate-500">Tagihan ini tidak lagi aktif dan tidak dapat dibayar.</p>
+                <div className="cancelled-summary mt-4 grid grid-cols-2 gap-2 text-left"><div><span>Kode transaksi</span><strong>{order.code}</strong></div><div><span>Total tagihan</span><strong>{formatRupiah(order.totalAmount)}</strong></div></div>
               </div>
             )}
           </div>
@@ -754,7 +757,7 @@ function QrisPageInner() {
   const defaultQrisId = list.find((q) => q.isDefault)?.id ?? list[0]?.id ?? null;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#030712] font-sans pb-32 text-slate-100 selection:bg-emerald-500 selection:text-slate-950">
+    <div className="app-page qris-page relative min-h-screen overflow-hidden bg-[#030712] font-sans pb-32 text-slate-100 selection:bg-emerald-500 selection:text-slate-950">
       <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px]"></div>
       <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]"></div>
 
@@ -770,7 +773,7 @@ function QrisPageInner() {
             {activeTab === "list" && (
               <button
                 onClick={() => { setShowForm(!showForm); setError(""); setDetectMsg(null); setQrisInfo(null); }}
-                className={`rounded-2xl px-5 py-2.5 text-xs font-extrabold transition-all duration-300 active:scale-95 ${
+                className={`qris-cancel-toggle rounded-2xl px-5 py-2.5 text-xs font-extrabold transition-all duration-300 active:scale-95 ${
                   showForm 
                   ? "bg-slate-800/80 text-slate-300 border border-slate-700 hover:bg-slate-800" 
                   : "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 shadow-lg shadow-emerald-500/20"

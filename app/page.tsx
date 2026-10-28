@@ -43,34 +43,19 @@ export default function DashboardPage() {
   }, [router, loadData]);
 
   const paidOrders = orders.filter((o) => o.status === "paid");
-  const pendingOrders = orders.filter((o) => ["pending", "awaiting_payment"].includes(o.status));
+  const pendingOrders = orders.filter((o) => ["pending", "awaiting_payment", "awaiting_confirmation"].includes(o.status));
   const totalOmset = paidOrders.reduce((sum, o) => sum + o.totalAmount, 0);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f6f8fc] pb-32 selection:bg-indigo-500/20">
+    <div className="dashboard-page relative min-h-screen overflow-hidden bg-[#070b14] pb-32 selection:bg-indigo-500/20">
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute -top-32 right-[-15%] h-[520px] w-[520px] rounded-full bg-gradient-to-br from-indigo-300/30 via-violet-300/20 to-blue-300/20 blur-[80px] animate-float" />
         <div className="absolute left-[-20%] top-[35%] h-[420px] w-[420px] rounded-full bg-gradient-to-br from-blue-200/30 to-cyan-200/20 blur-[70px] animate-float-delayed" />
       </div>
-      <header className="sticky top-0 z-30 border-b border-white/70 bg-white/75 backdrop-blur-[20px]">
-        <div className="mx-auto flex max-w-[640px] items-center justify-between px-5 py-[18px]">
-          <div className="flex items-center gap-3.5">
-            <div className="relative flex h-11 w-11 items-center justify-center rounded-[14px] bg-gradient-to-br from-indigo-600 to-violet-600 text-[15px] font-black text-white shadow-[0_8px_20px_rgba(79,70,229,0.3),inset_0_1px_0_rgba(255,255,255,0.3)]">
-              <span className="relative z-10">Q</span>
-              <div className="absolute inset-0 rounded-[14px] bg-gradient-to-br from-white/20 to-transparent" />
-            </div>
-            <div className="leading-none">
-              <h1 className="text-[16px] font-extrabold tracking-[-0.02em] text-slate-900">QRIS Pro</h1>
-              <p className="mt-[3px] text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Dashboard Store</p>
-            </div>
-          </div>
-          <button onClick={loadData} className="group flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/70 bg-white/80 text-slate-600 shadow-[0_2px_10px_rgba(0,0,0,0.04)] backdrop-blur-xl transition-all duration-300 hover:border-indigo-200 hover:bg-white hover:text-indigo-600 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] active:scale-[0.92]">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-700 ${loading ? "animate-spin" : "group-hover:rotate-180"}`}>
-              <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8V3h-5l2.26 2.26A7 7 0 1 0 21 12Z" />
-            </svg>
-          </button>
-        </div>
-      </header>
+      <div className="dashboard-banner relative z-10 mx-auto mt-5 flex max-w-[920px] items-center justify-center px-5">
+        <div className="dashboard-banner-card"><img src="https://i.postimg.cc/MTy54nP9/walzpay-horizontal-light.png" alt="WALZPAY Payment Gateway" /><span className="dashboard-banner-live"><span /> Sistem aktif</span></div>
+      </div>
+
       <main className="relative z-10 mx-auto max-w-[640px] space-y-5 px-5 pt-6">
         <div className="animate-slideUp">
           <div className="group relative overflow-hidden rounded-[28px] bg-gradient-to-br from-indigo-600 via-indigo-600 to-violet-700 p-[1px] shadow-[0_16px_40px_-16px_rgba(79,70,229,0.6)]">
@@ -87,12 +72,8 @@ export default function DashboardPage() {
                     </span>
                     <span className="text-[11px] font-bold tracking-wide text-white/90">Live Monitoring</span>
                   </div>
-                  <h2 className="mt-4 max-w-[16ch] text-[26px] font-extrabold leading-[0.95] tracking-[-0.03em] text-white">Halo, {user?.name || "TOKO WALZY"} 👋</h2>
-                  <p className="mt-2.5 max-w-[28ch] text-[13px] font-medium leading-[1.5] text-indigo-100/80">Kelola pembayaran QRIS dinamis, pantau omset realtime dalam satu dashboard cantik.</p>
-                  <div className="mt-4 flex items-center gap-2 text-[11px] font-semibold text-indigo-100/70">
-                    <div className="h-px w-8 bg-white/20" />
-                    <span>{qrisList.length} QRIS tersimpan • {orders.length} total order</span>
-                  </div>
+                  <h2 className="mt-4 max-w-[18ch] text-[26px] font-extrabold leading-[0.95] tracking-[-0.03em] text-white">Halo, {user?.name || "TOKO WALZY"} 👋</h2>
+                  <p className="mt-3 max-w-[30ch] text-[13px] font-medium leading-relaxed text-slate-600">Pantau semua pembayaran, buat tagihan, dan jaga arus kas tetap bergerak.</p>
                 </div>
                 <div className="hidden h-[88px] w-[88px] shrink-0 items-center justify-center rounded-[20px] border border-white/15 bg-white/10 backdrop-blur-xl sm:flex">
                   <div className="h-12 w-12 rounded-[12px] bg-white shadow-[0_8px_20px_rgba(0,0,0,0.12)] p-1.5">
@@ -143,7 +124,7 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
-        <div className="animate-slideUp rounded-[24px] border border-white bg-white/70 p-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)] backdrop-blur-xl" style={{ animationDelay: "200ms" }}>
+        <div className="animate-slideUp rounded-[24px] border border-white bg-slate-900/70 p-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)] backdrop-blur-xl" style={{ animationDelay: "200ms" }}>
           <div className="mb-2 flex items-center justify-between px-3 pt-2">
             <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Aksi Cepat</p>
             <div className="h-1 w-8 rounded-full bg-slate-200" />
@@ -165,7 +146,7 @@ export default function DashboardPage() {
             </div>
           </Link>
         </div>
-        <div className="animate-slideUp rounded-[26px] border border-white bg-white/75 p-5 shadow-[0_12px_32px_rgba(0,0,0,0.05)] backdrop-blur-xl" style={{ animationDelay: "260ms" }}>
+        <div className="animate-slideUp rounded-[26px] border border-white bg-slate-900/75 p-5 shadow-[0_12px_32px_rgba(0,0,0,0.05)] backdrop-blur-xl" style={{ animationDelay: "260ms" }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="h-6 w-1 rounded-full bg-slate-900" />
@@ -201,9 +182,9 @@ export default function DashboardPage() {
               <div className="space-y-2.5">
                 {orders.slice(0, 5).map((ord, idx) => (
                   <Link key={ord.id} href={`/pay/${ord.code}`} className="group flex items-center justify-between rounded-[18px] border border-slate-100 bg-white p-3.5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-[1px] hover:border-indigo-200/60 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] active:scale-[0.98] animate-slideUp" style={{ animationDelay: `${320 + idx * 60}ms` }}>
-                    <div className="flex items-center gap-3.5">
-                      <div className={`relative flex h-11 w-11 items-center justify-center rounded-[13px] text-[13px] font-bold ring-1 transition-all duration-300 ${ord.status === "paid" ? "bg-emerald-50 text-emerald-600 ring-emerald-100 group-hover:bg-emerald-600 group-hover:text-white group-hover:ring-emerald-600" : ord.status === "cancelled" ? "bg-slate-50 text-slate-400 ring-slate-100" : "bg-amber-50 text-amber-600 ring-amber-100 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-500"}`}>
-                        <span className="relative z-10">{ord.status === "paid" ? "✓" : ord.status === "cancelled" ? "×" : "•"}</span>
+<div className="flex items-center gap-3.5">
+                      <div className={`relative flex h-11 w-11 items-center justify-center rounded-[13px] text-[13px] font-bold ring-1 transition-all duration-300 ${ord.status === "paid" ? "bg-emerald-50 text-emerald-600 ring-emerald-100 group-hover:bg-emerald-600 group-hover:text-white group-hover:ring-emerald-600" : ord.status === "cancelled" ? "bg-slate-50 text-slate-500 ring-slate-200" : ord.status === "expired" ? "bg-rose-50 text-rose-500 ring-rose-100" : "bg-amber-50 text-amber-600 ring-amber-100 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-500"}`}>
+                        <span className="dashboard-status-icon relative z-10">{ord.status === "paid" ? <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-label="Lunas"><path d="m5 12 4 4L19 6" /></svg> : ord.status === "cancelled" ? <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-label="Dibatalkan"><path d="M6 6l12 12M18 6 6 18" /></svg> : ord.status === "expired" ? <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-label="Expired"><circle cx="12" cy="12" r="8" /><path d="m12 8 0 4 3 2" /></svg> : <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-label="Menunggu"><circle cx="12" cy="12" r="8" /><path d="M12 8v4l2.5 2" /></svg>}</span>
                       </div>
                       <div>
                         <p className="font-mono text-[12.5px] font-bold tracking-tight text-slate-900">{ord.code}</p>
@@ -212,7 +193,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="text-right">
                       <p className="text-[13px] font-extrabold tracking-tight text-slate-900">{formatRupiah(ord.totalAmount)}</p>
-                      <span className={`mt-1 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide ${ord.status === "paid" ? "bg-emerald-50 text-emerald-700" : ord.status === "cancelled" ? "bg-slate-100 text-slate-500" : "bg-amber-50 text-amber-700"}`}>{ord.status === "paid" ? "Lunas" : ord.status === "cancelled" ? "Batal" : "Menunggu"}</span>
+                      <span className={`mt-1 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide ${ord.status === "paid" ? "bg-emerald-50 text-emerald-700" : ord.status === "cancelled" ? "bg-slate-100 text-slate-600" : ord.status === "expired" ? "bg-rose-50 text-rose-700" : "bg-amber-50 text-amber-700"}`}>{ord.status === "paid" ? "Lunas" : ord.status === "cancelled" ? "Dibatalkan" : ord.status === "expired" ? "Expired" : "Menunggu"}</span>
                     </div>
                   </Link>
                 ))}
