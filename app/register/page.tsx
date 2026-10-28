@@ -107,8 +107,8 @@ export default function RegisterPage() {
   return (
     <main className="relative min-h-screen w-full bg-[#060913] text-slate-100 flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden select-none">
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-b from-blue-500/15 via-purple-600/10 to-transparent rounded-full blur-[140px] animate-float" />
-        <div className="absolute bottom-0 left-10 w-[450px] h-[450px] bg-teal-600/10 rounded-full blur-[160px]" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[750px] h-[550px] bg-gradient-to-b from-blue-500/20 via-purple-600/10 to-transparent rounded-full blur-[140px] animate-float" />
+        <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-teal-600/10 rounded-full blur-[160px]" />
         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25" />
       </div>
 
@@ -120,19 +120,25 @@ export default function RegisterPage() {
               <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 opacity-50 blur-md animate-pulse" />
               <div className="relative h-16 w-16 rounded-[24px] bg-slate-950/80 p-2.5 border border-white/15 shadow-xl flex items-center justify-center">
                 <img
-                  src="https://i.postimg.cc/3xVZxXz9/walzpay-app-icon.png"
+                  src="https://cdn.phototourl.com/member/2026-10-28-caf129d3-a92e-4789-9273-6d4c8a50e3b8.jpg"
                   alt="WALZPAY Logo"
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-contain rounded-xl"
                 />
               </div>
             </div>
 
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-[11px] font-medium mb-2">
-                <span>✨ Fast Merchant Onboarding</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-[11px] font-semibold mb-2">
+                <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 text-blue-400">
+                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="8.5" cy="7" r="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <line x1="20" y1="8" x2="20" y2="14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="17" y1="11" x2="23" y2="11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+                <span>Merchant Onboarding</span>
               </div>
               <h1 className="text-2xl font-extrabold text-white tracking-tight font-display">
-                Buat Akun Baru 🎉
+                Buat Akun Baru
               </h1>
               <p className="text-xs text-slate-400 mt-1">
                 Mulai terima pembayaran QRIS instan sekarang
@@ -170,8 +176,13 @@ export default function RegisterPage() {
                 />
               </div>
               {nameErr && (
-                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1">
-                  <span>🚨</span> {nameErr}
+                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1.5">
+                  <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 text-rose-400 flex-shrink-0">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                    <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  <span>{nameErr}</span>
                 </p>
               )}
             </div>
@@ -205,8 +216,13 @@ export default function RegisterPage() {
                 />
               </div>
               {emailErr && (
-                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1">
-                  <span>🚨</span> {emailErr}
+                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1.5">
+                  <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 text-rose-400 flex-shrink-0">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                    <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  <span>{emailErr}</span>
                 </p>
               )}
             </div>
@@ -257,15 +273,24 @@ export default function RegisterPage() {
                 </button>
               </div>
               {passErr && (
-                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1">
-                  <span>🚨</span> {passErr}
+                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1.5">
+                  <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 text-rose-400 flex-shrink-0">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                    <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  <span>{passErr}</span>
                 </p>
               )}
             </div>
 
             {serverErr && (
               <div className="p-3.5 rounded-[18px] bg-rose-500/10 border border-rose-500/20 text-xs text-rose-300 flex items-center gap-2">
-                <span>⚠️</span>
+                <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-rose-400 flex-shrink-0">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
                 <span>{serverErr}</span>
               </div>
             )}
@@ -290,7 +315,9 @@ export default function RegisterPage() {
                 ) : (
                   <>
                     <span>Daftar Akun Merchant</span>
-                    <span>✨</span>
+                    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </>
                 )}
               </div>
@@ -301,7 +328,7 @@ export default function RegisterPage() {
             <p className="text-xs text-slate-400">
               Sudah memiliki akun?{" "}
               <Link href="/login" className="font-bold text-teal-400 hover:text-teal-300 transition-colors">
-                Masuk Saja 🔑
+                Masuk Saja
               </Link>
             </p>
           </div>
