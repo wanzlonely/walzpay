@@ -3,8 +3,8 @@ import "./globals.css";
 import BottomNav from "@/components/BottomNav";
 
 export const metadata: Metadata = {
-  title: "QRIS Pro",
-  description: "Generate & kelola QRIS dinamis",
+  title: "WALZPAY",
+  description: "Kelola pembayaran digital dan QRIS dinamis dengan lebih modern.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

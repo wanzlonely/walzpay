@@ -104,7 +104,7 @@ export default function PaymentPage() {
   const isActive = !["paid", "expired", "cancelled"].includes(order.status);
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#030712] px-5 py-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
+    <div className="payment-page relative flex min-h-screen flex-col items-center justify-center bg-[#030712] px-5 py-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
       <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse-glow" />
       <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-float-slow" />
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-indigo-500/5 blur-[140px]" />

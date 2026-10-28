@@ -60,8 +60,8 @@ export default function DashboardPage() {
               <div className="absolute inset-0 rounded-[14px] bg-gradient-to-br from-white/20 to-transparent" />
             </div>
             <div className="leading-none">
-              <h1 className="text-[16px] font-extrabold tracking-[-0.02em] text-slate-900">QRIS Pro</h1>
-              <p className="mt-[3px] text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Dashboard Store</p>
+              <h1 className="text-[16px] font-extrabold tracking-[-0.02em] text-slate-900">WALZPAY</h1>
+              <p className="mt-[3px] text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Payment workspace</p>
             </div>
           </div>
           <button onClick={loadData} className="group flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/70 bg-white/80 text-slate-600 shadow-[0_2px_10px_rgba(0,0,0,0.04)] backdrop-blur-xl transition-all duration-300 hover:border-indigo-200 hover:bg-white hover:text-indigo-600 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] active:scale-[0.92]">

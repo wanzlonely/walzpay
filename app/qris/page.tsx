@@ -754,7 +754,7 @@ function QrisPageInner() {
   const defaultQrisId = list.find((q) => q.isDefault)?.id ?? list[0]?.id ?? null;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#030712] font-sans pb-32 text-slate-100 selection:bg-emerald-500 selection:text-slate-950">
+    <div className="app-page qris-page relative min-h-screen overflow-hidden bg-[#030712] font-sans pb-32 text-slate-100 selection:bg-emerald-500 selection:text-slate-950">
       <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px]"></div>
       <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]"></div>
 
