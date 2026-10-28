@@ -13,6 +13,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const formReady = Boolean(name && email && password);
   const handleRegister = async () => {
     setError(""); setLoading(true);
     try {
@@ -35,7 +36,7 @@ export default function RegisterPage() {
         <label>Alamat email<input type="email" value={email} onChange={e => setEmail(e.target.value)} onKeyDown={handleKeyDown} className={inputClass} placeholder="nama@email.com" autoComplete="email"/></label>
         <label>Password<input type="password" value={password} onChange={e => setPassword(e.target.value)} onKeyDown={handleKeyDown} className={inputClass} placeholder="Minimal 6 karakter" autoComplete="new-password"/></label>
         {error && <div className="form-alert">{error}</div>}
-        <button onClick={handleRegister} disabled={loading} className="primary-action">{loading ? "Membuat akun..." : "Buat akun sekarang"}<span>↗</span></button>
+        <button onClick={handleRegister} disabled={loading} className={`primary-action ${formReady ? "ready" : ""}`}>{loading ? "Membuat akun..." : "Buat akun sekarang"}<span>↗</span></button>
       </div>
       <div className="auth-footer"><span>Sudah punya akun?</span><Link href="/login">Masuk ke akun</Link></div>
     </div><p className="auth-note"><span>●</span> Gratis untuk mulai digunakan</p>

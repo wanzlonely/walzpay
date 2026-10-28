@@ -21,6 +21,7 @@ export default function LoginPage() {
   const passTouched = useRef(false);
   const validateEmail = (value: string) => !value ? "Email wajib diisi" : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "Format email tidak valid" : null;
   const validatePassword = (value: string) => !value ? "Password wajib diisi" : value.length < 6 ? "Password minimal 6 karakter" : null;
+  const formReady = Boolean(email && password);
   const handleLogin = async () => {
     emailTouched.current = true;
     passTouched.current = true;
@@ -56,7 +57,7 @@ export default function LoginPage() {
         <label>Alamat email<input type="email" value={email} onChange={e => { setEmail(e.target.value); if (emailTouched.current) setEmailErr(validateEmail(e.target.value)); }} onBlur={() => { emailTouched.current = true; setEmailErr(validateEmail(email)); }} onKeyDown={handleKeyDown} className={inputClass} placeholder="nama@email.com" autoComplete="email"/>{emailErr && <small className="field-error">{emailErr}</small>}</label>
         <label>Password<div className="relative"><input type={showPass ? "text" : "password"} value={password} onChange={e => { setPassword(e.target.value); if (passTouched.current) setPassErr(validatePassword(e.target.value)); }} onBlur={() => { passTouched.current = true; setPassErr(validatePassword(password)); }} onKeyDown={handleKeyDown} className={inputClass} placeholder="••••••••" autoComplete="current-password"/><button type="button" className="pass-toggle" onClick={() => setShowPass(!showPass)} aria-label={showPass ? "Sembunyikan password" : "Tampilkan password"}>{showPass ? "◉" : "◌"}</button></div>{passErr && <small className="field-error">{passErr}</small>}</label>
         {serverErr && <div className="form-alert">{serverErr}</div>}
-        <button onClick={handleLogin} disabled={loading} className="primary-action">{loading ? "Memverifikasi..." : "Masuk ke dashboard"}<span>↗</span></button>
+        <button onClick={handleLogin} disabled={loading} className={`primary-action ${formReady ? "ready" : ""}`}>{loading ? "Memverifikasi..." : "Masuk ke dashboard"}<span>↗</span></button>
       </div>
       <div className="auth-footer"><span>Belum punya akun?</span><Link href="/register">Buat akun baru</Link></div>
     </div><p className="auth-note"><span>●</span> Sistem aman dan terenkripsi</p>
