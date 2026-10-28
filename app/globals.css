@@ -135,7 +135,11 @@ body::before {
 .dashboard-page .bg-slate-50, .dashboard-page .bg-white { background-color: rgba(255,255,255,.48); }
 .dashboard-page .text-slate-900, .dashboard-page .text-slate-700 { color: #202b45; }
 .dashboard-page .text-indigo-600 { color: #a5b4fc; }
-.dashboard-page main > div:nth-child(1) > div { background: linear-gradient(135deg, #5f4fe6, #4934d4 56%, #3a2aba) !important; border-radius: 30px; box-shadow: 0 22px 55px rgba(79,70,229,.32); }
+.dashboard-page main > div:nth-child(1) > div { background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(223,229,255,.64) 58%, rgba(220,245,241,.62)) !important; border: 1px solid rgba(255,255,255,.9); border-radius: 30px; box-shadow: 0 24px 65px rgba(91,111,168,.2), inset 0 1px 0 rgba(255,255,255,.96); }
+.dashboard-page main > div:nth-child(1) > div h2 { color: #202b45 !important; }
+.dashboard-page main > div:nth-child(1) > div p, .dashboard-page main > div:nth-child(1) > div span { color: #657390 !important; }
+.dashboard-page main > div:nth-child(1) > div > div:first-child { background: rgba(255,255,255,.52); border-color: rgba(116,132,240,.2); }
+.dashboard-page main > div:nth-child(1) > div > div:first-child span:first-child span:last-child { background: #45cdb1; }
 .dashboard-page main > div:nth-child(2) > div { background: linear-gradient(145deg, rgba(236,246,247,.9), rgba(205,222,231,.78)) !important; border-color: rgba(255,255,255,.7); }
 .dashboard-page main > div:nth-child(2) > div:nth-child(2) { background: linear-gradient(145deg, rgba(255,247,231,.94), rgba(244,232,210,.86)) !important; }
 .dashboard-page main > div:nth-child(3) a { border: 1px solid rgba(255,255,255,.8); background: linear-gradient(145deg, rgba(255,255,255,.66), rgba(255,255,255,.36)); color: #273452; box-shadow: 0 14px 32px rgba(91,111,168,.12); }
@@ -168,8 +172,16 @@ body::before {
 .app-page .text-emerald-400, .payment-page .text-emerald-400 { color: #5d6ff3; }
 .app-page .text-cyan-400, .payment-page .text-cyan-400 { color: #3f9bc8; }
 .transactions-page h1, .qris-page h1, .profile-page h1 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -.06em; }
+.transactions-page button, .qris-page button, .profile-page button { border-color: rgba(255,255,255,.78); box-shadow: 0 10px 24px rgba(91,111,168,.1), inset 0 1px 0 rgba(255,255,255,.8); }
+.transactions-page button.bg-gradient-to-r, .qris-page button.bg-gradient-to-r, .profile-page button.bg-gradient-to-r { background: linear-gradient(110deg, rgba(119,226,194,.82), rgba(82,208,232,.82)) !important; color: #173447 !important; }
+.transactions-page .bg-slate-900\/60, .qris-page .bg-slate-900\/60, .profile-page .bg-slate-950\/70 { background: rgba(255,255,255,.44); }
+.transactions-page .glass-card .text-emerald-400, .qris-page .glass-card .text-emerald-400, .profile-page .glass-card .text-emerald-400 { color: #5c70ed; }
 .transactions-page .rounded-3xl, .qris-page .rounded-3xl, .profile-page .rounded-3xl { border-radius: 24px; }
 .payment-page .rounded-3xl { border-radius: 28px; }
+.receipt-card { width: min(100%, 420px); background: linear-gradient(145deg, rgba(255,255,255,.8), rgba(255,255,255,.48)) !important; border-color: rgba(255,255,255,.92) !important; box-shadow: 0 24px 70px rgba(91,111,168,.2), inset 0 1px 0 rgba(255,255,255,.98) !important; }
+.receipt-card .divide-y { border-color: rgba(131,145,187,.2); background: rgba(255,255,255,.36); }
+.receipt-card .text-slate-200, .receipt-card .text-slate-300 { color: #25324f !important; }
+.receipt-card .text-slate-400 { color: #71809c !important; }
 .payment-page .bg-gradient-to-r.from-emerald-400 { background-image: linear-gradient(110deg, #2563eb, #0ea5e9); }
 button { text-align: center; }
 .primary-action { justify-content: center; gap: 10px; }

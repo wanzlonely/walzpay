@@ -117,7 +117,7 @@ export default function PaymentPage() {
           Kembali
         </button>
 
-        <div className="glass-card glass-card-hover relative rounded-3xl p-6 shadow-2xl ring-1 ring-white/10 transition-all duration-300">
+        <div className="receipt-card glass-card glass-card-hover relative rounded-3xl p-6 shadow-2xl ring-1 ring-white/10 transition-all duration-300">
           <div className="text-center border-b border-slate-800/60 pb-5">
             <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Total Tagihan</span>
             <h1 className="text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 mt-1">
@@ -163,6 +163,7 @@ export default function PaymentPage() {
           )}
 
           <div className="mt-2 divide-y divide-slate-800/60 rounded-2xl border border-slate-800/80 bg-slate-950/40 backdrop-blur-md">
+            <div className="flex justify-between px-4 py-3 text-xs"><span className="text-slate-400 font-medium">Status</span><span className="font-semibold text-emerald-400">{order.status === "paid" ? "Berhasil" : order.status === "expired" ? "Kadaluarsa" : order.status === "cancelled" ? "Dibatalkan" : "Menunggu pembayaran"}</span></div>
             <div className="flex justify-between px-4 py-3 text-xs"><span className="text-slate-400 font-medium">Kode</span><span className="font-mono font-bold text-slate-200">{order.code}</span></div>
             <div className="flex justify-between px-4 py-3 text-xs"><span className="text-slate-400 font-medium">Tanggal</span><span className="font-semibold text-slate-300">{formatDate(order.createdAt)}</span></div>
             <div className="flex justify-between px-4 py-3 text-xs"><span className="text-slate-400 font-medium">Nominal</span><span className="font-semibold text-slate-200">{formatRupiah(order.amount)}</span></div>
