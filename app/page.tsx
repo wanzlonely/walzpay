@@ -47,12 +47,12 @@ export default function DashboardPage() {
   const totalOmset = paidOrders.reduce((sum, o) => sum + o.totalAmount, 0);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f6f8fc] pb-32 selection:bg-indigo-500/20">
+    <div className="relative min-h-screen overflow-hidden bg-[#070b14] pb-32 selection:bg-indigo-500/20">
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute -top-32 right-[-15%] h-[520px] w-[520px] rounded-full bg-gradient-to-br from-indigo-300/30 via-violet-300/20 to-blue-300/20 blur-[80px] animate-float" />
         <div className="absolute left-[-20%] top-[35%] h-[420px] w-[420px] rounded-full bg-gradient-to-br from-blue-200/30 to-cyan-200/20 blur-[70px] animate-float-delayed" />
       </div>
-      <header className="sticky top-0 z-30 border-b border-white/70 bg-white/75 backdrop-blur-[20px]">
+      <header className="sticky top-0 z-30 border-b border-white/70 bg-slate-950/70 backdrop-blur-[20px]">
         <div className="mx-auto flex max-w-[640px] items-center justify-between px-5 py-[18px]">
           <div className="flex items-center gap-3.5">
             <div className="relative flex h-11 w-11 items-center justify-center rounded-[14px] bg-gradient-to-br from-indigo-600 to-violet-600 text-[15px] font-black text-white shadow-[0_8px_20px_rgba(79,70,229,0.3),inset_0_1px_0_rgba(255,255,255,0.3)]">
@@ -143,7 +143,7 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
-        <div className="animate-slideUp rounded-[24px] border border-white bg-white/70 p-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)] backdrop-blur-xl" style={{ animationDelay: "200ms" }}>
+        <div className="animate-slideUp rounded-[24px] border border-white bg-slate-900/70 p-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)] backdrop-blur-xl" style={{ animationDelay: "200ms" }}>
           <div className="mb-2 flex items-center justify-between px-3 pt-2">
             <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Aksi Cepat</p>
             <div className="h-1 w-8 rounded-full bg-slate-200" />
@@ -165,7 +165,7 @@ export default function DashboardPage() {
             </div>
           </Link>
         </div>
-        <div className="animate-slideUp rounded-[26px] border border-white bg-white/75 p-5 shadow-[0_12px_32px_rgba(0,0,0,0.05)] backdrop-blur-xl" style={{ animationDelay: "260ms" }}>
+        <div className="animate-slideUp rounded-[26px] border border-white bg-slate-900/75 p-5 shadow-[0_12px_32px_rgba(0,0,0,0.05)] backdrop-blur-xl" style={{ animationDelay: "260ms" }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="h-6 w-1 rounded-full bg-slate-900" />

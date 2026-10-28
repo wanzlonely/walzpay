@@ -13,9 +13,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="relative min-h-screen bg-[#f6f8fc] font-[Plus_Jakarta_Sans] antialiased selection:bg-indigo-500/20 selection:text-indigo-900">
+      <body className="relative min-h-screen bg-[#070b14] font-[DM_Sans] antialiased selection:bg-emerald-400/20 selection:text-emerald-100">
         <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
           <div className="absolute -top-40 left-1/2 h-[720px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-200/40 via-violet-200/30 to-blue-200/30 blur-[110px]" />
           <div className="absolute top-[28%] -left-40 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-blue-200/30 to-cyan-100/30 blur-[90px] animate-float" />
