@@ -52,6 +52,9 @@ export default function DashboardPage() {
         <div className="absolute -top-32 right-[-15%] h-[520px] w-[520px] rounded-full bg-gradient-to-br from-indigo-300/30 via-violet-300/20 to-blue-300/20 blur-[80px] animate-float" />
         <div className="absolute left-[-20%] top-[35%] h-[420px] w-[420px] rounded-full bg-gradient-to-br from-blue-200/30 to-cyan-200/20 blur-[70px] animate-float-delayed" />
       </div>
+      <div className="dashboard-banner relative z-10 mx-auto mt-5 flex max-w-[920px] items-center justify-center px-5">
+        <div className="dashboard-banner-card"><img src="https://i.postimg.cc/MTy54nP9/walzpay-horizontal-light.png" alt="WALZPAY Payment Gateway" /><span className="dashboard-banner-live"><span /> Sistem aktif</span></div>
+      </div>
 
       <main className="relative z-10 mx-auto max-w-[640px] space-y-5 px-5 pt-6">
         <div className="animate-slideUp">
