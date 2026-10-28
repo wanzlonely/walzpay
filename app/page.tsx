@@ -64,7 +64,7 @@ export default function DashboardPage() {
               <p className="mt-[3px] text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Payment gateway</p>
             </div>
           </div>
-          <button onClick={loadData} className="group flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/70 bg-white/80 text-slate-600 shadow-[0_2px_10px_rgba(0,0,0,0.04)] backdrop-blur-xl transition-all duration-300 hover:border-indigo-200 hover:bg-white hover:text-indigo-600 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] active:scale-[0.92]">
+          <button onClick={loadData} aria-label="Muat ulang data" className="dashboard-refresh group flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/70 bg-white/80 text-slate-600 shadow-[0_2px_10px_rgba(0,0,0,0.04)] backdrop-blur-xl transition-all duration-300 hover:border-indigo-200 hover:bg-white hover:text-indigo-600 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] active:scale-[0.92]">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-700 ${loading ? "animate-spin" : "group-hover:rotate-180"}`}>
               <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8V3h-5l2.26 2.26A7 7 0 1 0 21 12Z" />
             </svg>

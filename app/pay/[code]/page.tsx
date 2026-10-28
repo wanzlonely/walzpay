@@ -110,6 +110,7 @@ export default function PaymentPage() {
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-indigo-500/5 blur-[140px]" />
 
       <div className="relative z-10 w-full max-w-sm">
+        <div className="payment-brandbar"><div className="payment-brandmark">W</div><div><strong>WALZPAY</strong><span>SECURE PAYMENT</span></div><div className="payment-lock">✓</div></div>
         <button onClick={() => router.back()} className="group mb-5 inline-flex items-center gap-2 rounded-2xl border border-slate-800/80 bg-slate-900/60 px-4 py-2.5 text-xs font-extrabold text-slate-300 shadow-xl backdrop-blur-xl transition-all duration-300 hover:border-slate-700 hover:text-white hover:bg-slate-800/80 active:scale-95">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:-translate-x-1">
             <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>

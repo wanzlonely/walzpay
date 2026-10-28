@@ -20,6 +20,9 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--bg-main);
   color: var(--text-main);
   font-family: 'DM Sans',system-ui,-apple-system,sans-serif;
@@ -124,6 +127,9 @@ body::before {
 .dashboard-page { background: #eef3ff !important; color: #202b45; }
 .dashboard-page::before { content: ''; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 8% 6%, rgba(125,153,255,.34), transparent 28%), radial-gradient(circle at 90% 84%, rgba(117,231,220,.28), transparent 26%), radial-gradient(circle at 55% 45%, rgba(231,190,255,.2), transparent 32%); z-index: 0; }
 .dashboard-page header { border-color: rgba(255,255,255,.74); background: rgba(255,255,255,.52); backdrop-filter: blur(28px) saturate(160%); }
+.dashboard-refresh { border: 1px solid rgba(255,255,255,.86) !important; background: rgba(255,255,255,.62) !important; box-shadow: 0 8px 20px rgba(91,111,168,.13), inset 0 1px 0 rgba(255,255,255,.96) !important; }
+.dashboard-refresh svg { stroke: #5668df; }
+.dashboard-refresh:hover { background: rgba(255,255,255,.86) !important; transform: rotate(12deg); }
 .app-page .glass-card, .dashboard-page main > div:nth-child(3), .dashboard-page main > div:nth-child(4) { animation: fadeInUp .65s cubic-bezier(.16,1,.3,1) both; }
 @media (prefers-reduced-motion: no-preference) {
   .app-page .glass-card:hover, .dashboard-page main > div:hover { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
@@ -182,7 +188,13 @@ body::before {
 .transactions-page .glass-card .text-emerald-400, .qris-page .glass-card .text-emerald-400, .profile-page .glass-card .text-emerald-400 { color: #5c70ed; }
 .transactions-page .rounded-3xl, .qris-page .rounded-3xl, .profile-page .rounded-3xl { border-radius: 24px; }
 .payment-page .rounded-3xl { border-radius: 28px; }
-.receipt-card { width: min(100%, 420px); background: linear-gradient(145deg, rgba(255,255,255,.8), rgba(255,255,255,.48)) !important; border-color: rgba(255,255,255,.92) !important; box-shadow: 0 24px 70px rgba(91,111,168,.2), inset 0 1px 0 rgba(255,255,255,.98) !important; }
+.payment-page { width: 100%; min-width: 0; overflow-x: hidden; }
+.payment-brandbar { display: flex; align-items: center; gap: 11px; margin: 0 auto 15px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.78); border-radius: 18px; background: rgba(255,255,255,.55); box-shadow: 0 12px 28px rgba(91,111,168,.13), inset 0 1px 0 rgba(255,255,255,.95); backdrop-filter: blur(24px); }
+.payment-brandmark { display: grid; width: 32px; height: 32px; place-items: center; border-radius: 11px; background: linear-gradient(135deg, #6e7cf3, #b178e9); color: white; font-family: 'Space Grotesk', sans-serif; font-weight: 700; box-shadow: 0 7px 15px rgba(103,112,225,.25); }
+.payment-brandbar strong { display: block; color: #202b45; font-family: 'Space Grotesk', sans-serif; font-size: 13px; letter-spacing: -.02em; }
+.payment-brandbar span { display: block; margin-top: 2px; color: #8490a8; font-size: 8px; font-weight: 700; letter-spacing: .15em; }
+.payment-lock { display: grid; width: 25px; height: 25px; margin-left: auto; place-items: center; border-radius: 50%; background: rgba(73,201,166,.16); color: #27a982; font-size: 12px; font-weight: 800; }
+.receipt-card { width: min(100%, 420px); min-width: 0; background: linear-gradient(145deg, rgba(255,255,255,.8), rgba(255,255,255,.48)) !important; border-color: rgba(255,255,255,.92) !important; box-shadow: 0 24px 70px rgba(91,111,168,.2), inset 0 1px 0 rgba(255,255,255,.98) !important; }
 .receipt-card .divide-y { border-color: rgba(131,145,187,.2); background: rgba(255,255,255,.36); }
 .receipt-card .text-slate-200, .receipt-card .text-slate-300 { color: #25324f !important; }
 .receipt-card .text-slate-400 { color: #71809c !important; }
