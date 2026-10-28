@@ -18,7 +18,21 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overscroll-behavior-x: none; }
+body { overscroll-behavior-x: none; -webkit-overflow-scrolling: touch; }
+.app-page, .dashboard-page, .payment-page { isolation: isolate; }
+.status-paid-text { color: #128766 !important; }
+.status-paid-bg { background: rgba(52,211,153,.16) !important; }
+.status-paid-border { border-color: rgba(16,185,129,.28) !important; }
+.status-pending-text { color: #ad6b08 !important; }
+.status-pending-bg { background: rgba(245,158,11,.16) !important; }
+.status-pending-border { border-color: rgba(245,158,11,.3) !important; }
+.status-expired-text { color: #c1445b !important; }
+.status-expired-bg { background: rgba(244,63,94,.13) !important; }
+.status-expired-border { border-color: rgba(244,63,94,.28) !important; }
+.status-cancelled-text { color: #64748b !important; }
+.status-cancelled-bg { background: rgba(100,116,139,.14) !important; }
+.status-cancelled-border { border-color: rgba(100,116,139,.26) !important; }
 html, body {
   width: 100%;
   max-width: 100%;

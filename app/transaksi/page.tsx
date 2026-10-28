@@ -8,12 +8,12 @@ import { formatRupiah, formatDate } from "@/lib/utils";
 import type { Order } from "@/types";
 
 const STATUS_MAP: Record<string, { label: string; text: string; bg: string; border: string }> = {
-  paid: { label: "Lunas", text: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
-  awaiting_confirmation: { label: "Konfirmasi", text: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-  expired: { label: "Expired", text: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20" },
-  awaiting_payment: { label: "Menunggu", text: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
-  pending: { label: "Pending", text: "text-slate-400", bg: "bg-slate-500/10", border: "border-slate-500/20" },
-  cancelled: { label: "Batal", text: "text-slate-400", bg: "bg-slate-500/10", border: "border-slate-500/20" },
+  paid: { label: "Lunas", text: "status-paid-text", bg: "status-paid-bg", border: "status-paid-border" },
+  awaiting_confirmation: { label: "Konfirmasi", text: "status-pending-text", bg: "status-pending-bg", border: "status-pending-border" },
+  expired: { label: "Expired", text: "status-expired-text", bg: "status-expired-bg", border: "status-expired-border" },
+  awaiting_payment: { label: "Menunggu", text: "status-pending-text", bg: "status-pending-bg", border: "status-pending-border" },
+  pending: { label: "Pending", text: "status-pending-text", bg: "status-pending-bg", border: "status-pending-border" },
+  cancelled: { label: "Batal", text: "status-cancelled-text", bg: "status-cancelled-bg", border: "status-cancelled-border" },
 };
 
 const FILTERS: { key: string; label: string }[] = [
