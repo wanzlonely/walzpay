@@ -46,6 +46,8 @@ export default function TransaksiPage() {
   useEffect(() => {
     if (!getUser()) { router.replace("/login"); return; }
     load();
+    const refreshTimer = window.setInterval(load, 5000);
+    return () => window.clearInterval(refreshTimer);
   }, [router, load]);
 
   const filtered = orders.filter((o) => {

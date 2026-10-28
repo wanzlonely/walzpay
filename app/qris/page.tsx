@@ -467,7 +467,7 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
             )}
 
             {order.status === "cancelled" && (
-              <div className="mx-6 mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 px-5 py-4 text-center">
+              <div className="cancelled-payment-state mx-6 mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 px-5 py-4 text-center">
                 <p className="text-sm font-extrabold text-slate-400">Transaksi Dibatalkan</p>
               </div>
             )}
@@ -770,7 +770,7 @@ function QrisPageInner() {
             {activeTab === "list" && (
               <button
                 onClick={() => { setShowForm(!showForm); setError(""); setDetectMsg(null); setQrisInfo(null); }}
-                className={`rounded-2xl px-5 py-2.5 text-xs font-extrabold transition-all duration-300 active:scale-95 ${
+                className={`qris-cancel-toggle rounded-2xl px-5 py-2.5 text-xs font-extrabold transition-all duration-300 active:scale-95 ${
                   showForm 
                   ? "bg-slate-800/80 text-slate-300 border border-slate-700 hover:bg-slate-800" 
                   : "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 shadow-lg shadow-emerald-500/20"
