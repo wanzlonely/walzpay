@@ -173,6 +173,10 @@ body::before {
 .app-page .text-cyan-400, .payment-page .text-cyan-400 { color: #3f9bc8; }
 .transactions-page h1, .qris-page h1, .profile-page h1 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -.06em; }
 .transactions-page button, .qris-page button, .profile-page button { border-color: rgba(255,255,255,.78); box-shadow: 0 10px 24px rgba(91,111,168,.1), inset 0 1px 0 rgba(255,255,255,.8); }
+.transactions-page .refresh-button, .profile-page .copy-button, .profile-page .profile-meta { background: rgba(255,255,255,.55) !important; border-color: rgba(255,255,255,.82) !important; color: #202b45 !important; box-shadow: 0 12px 26px rgba(91,111,168,.12), inset 0 1px 0 rgba(255,255,255,.94); }
+.transactions-page .refresh-button:hover, .profile-page .copy-button:hover { background: rgba(255,255,255,.78) !important; color: #5364df !important; }
+.payment-page button { background: rgba(255,255,255,.58) !important; border-color: rgba(255,255,255,.84) !important; color: #202b45 !important; box-shadow: 0 12px 28px rgba(91,111,168,.13), inset 0 1px 0 rgba(255,255,255,.94); }
+.payment-page button:hover { background: rgba(255,255,255,.8) !important; color: #5364df !important; }
 .transactions-page button.bg-gradient-to-r, .qris-page button.bg-gradient-to-r, .profile-page button.bg-gradient-to-r { background: linear-gradient(110deg, rgba(119,226,194,.82), rgba(82,208,232,.82)) !important; color: #173447 !important; }
 .transactions-page .bg-slate-900\/60, .qris-page .bg-slate-900\/60, .profile-page .bg-slate-950\/70 { background: rgba(255,255,255,.44); }
 .transactions-page .glass-card .text-emerald-400, .qris-page .glass-card .text-emerald-400, .profile-page .glass-card .text-emerald-400 { color: #5c70ed; }

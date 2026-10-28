@@ -21,7 +21,7 @@ function CopyField({ label, value, mono = false }: { label: string; value: strin
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
           }}
-          className={`shrink-0 rounded-2xl px-4 py-3.5 text-xs font-extrabold transition-all duration-300 active:scale-95 ${
+          className={`copy-button shrink-0 rounded-2xl px-4 py-3.5 text-xs font-extrabold transition-all duration-300 active:scale-95 ${
             copied
               ? "border border-emerald-500/30 bg-emerald-500/20 text-emerald-400 shadow-lg shadow-emerald-500/10"
               : "border border-slate-700/80 bg-slate-800/80 text-slate-200 hover:border-slate-600 hover:bg-slate-700 hover:text-white"
@@ -99,7 +99,7 @@ export default function ProfilePage() {
           <div>
             <h1 className="text-xl font-black tracking-tight text-slate-100">{user.name}</h1>
             <p className="text-sm font-semibold text-slate-400">{user.email}</p>
-            <div className="mt-2 inline-flex items-center rounded-full border border-slate-800/80 bg-slate-900/60 px-3 py-1 text-[10px] font-extrabold tracking-wider text-slate-400 uppercase backdrop-blur-md">
+            <div className="profile-meta mt-2 inline-flex items-center rounded-full border border-slate-800/80 bg-slate-900/60 px-3 py-1 text-[10px] font-extrabold tracking-wider text-slate-400 uppercase backdrop-blur-md">
               Bergabung {user.createdAt ? new Date(user.createdAt).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" }) : "—"}
             </div>
           </div>

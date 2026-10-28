@@ -72,7 +72,7 @@ export default function TransaksiPage() {
             <h1 className="text-2xl font-black tracking-tight text-slate-100">Transaksi</h1>
             <button
               onClick={load}
-              className="group flex items-center gap-1.5 rounded-2xl border border-slate-800/80 bg-slate-900/80 px-3.5 py-2 text-xs font-bold text-slate-300 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-slate-800 hover:text-emerald-400 active:scale-95"
+              className="refresh-button group flex items-center gap-1.5 rounded-2xl border border-slate-800/80 bg-slate-900/80 px-3.5 py-2 text-xs font-bold text-slate-300 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-slate-800 hover:text-emerald-400 active:scale-95"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-500 group-hover:rotate-180">
                 <polyline points="23 4 23 10 17 10" />

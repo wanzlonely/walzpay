@@ -87,7 +87,8 @@ export default function DashboardPage() {
                     </span>
                     <span className="text-[11px] font-bold tracking-wide text-white/90">Live Monitoring</span>
                   </div>
-                  <h2 className="mt-4 max-w-[16ch] text-[26px] font-extrabold leading-[0.95] tracking-[-0.03em] text-white">Halo, {user?.name || "TOKO WALZY"} 👋</h2>
+                  <h2 className="mt-4 max-w-[18ch] text-[26px] font-extrabold leading-[0.95] tracking-[-0.03em] text-white">Halo, {user?.name || "TOKO WALZY"} 👋</h2>
+                  <p className="mt-3 max-w-[30ch] text-[13px] font-medium leading-relaxed text-slate-600">Pantau semua pembayaran, buat tagihan, dan jaga arus kas tetap bergerak.</p>
                 </div>
                 <div className="hidden h-[88px] w-[88px] shrink-0 items-center justify-center rounded-[20px] border border-white/15 bg-white/10 backdrop-blur-xl sm:flex">
                   <div className="h-12 w-12 rounded-[12px] bg-white shadow-[0_8px_20px_rgba(0,0,0,0.12)] p-1.5">
