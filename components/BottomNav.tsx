@@ -17,7 +17,7 @@ export default function BottomNav() {
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-4 pt-2 pointer-events-none" style={{ paddingBottom: "env(safe-area-inset-bottom, 16px)" }}>
       <div className="mx-auto max-w-md pointer-events-auto">
-        <div className="relative flex items-center justify-between rounded-[26px] border border-white/10 bg-slate-950/85 p-2 shadow-[0_18px_60px_rgba(0,0,0,.35)] backdrop-blur-2xl ring-1 ring-white/5">
+        <div className="liquid-nav relative flex items-center justify-between rounded-[26px] border border-white/10 bg-slate-950/85 p-2 shadow-[0_18px_60px_rgba(0,0,0,.35)] backdrop-blur-2xl ring-1 ring-white/5">
           {tabs.map((tab) => {
             const active = tab.href === "/" ? pathname === "/" : pathname?.startsWith(tab.href);
             return (
