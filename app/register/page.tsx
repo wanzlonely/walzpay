@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { saveSession } from "@/lib/client-auth";
 
-function BrandMark() { return <div className="brand-mark"><div className="brand-mark-core">W</div></div>; }
+function BrandMark() { return <div className="brand-mark"><img src="https://i.postimg.cc/3xVZxXz9/walzpay-app-icon.png" alt="WALZPAY" /></div>; }
 
 export default function RegisterPage() {
   const router = useRouter();
