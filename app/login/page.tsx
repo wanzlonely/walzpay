@@ -82,15 +82,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#060812] px-5 py-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
-      <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#030712] px-5 py-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
+      <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse-glow" />
+      <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-float-slow" />
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-indigo-500/5 blur-[140px]" />
 
       <div className="relative z-10 w-full max-w-sm transition-all duration-500">
         <div className="mb-8 text-center">
           <div className="group relative mx-auto mb-4 inline-flex items-center justify-center">
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-30 blur-lg transition duration-500 group-hover:opacity-60" />
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-40 blur-lg transition duration-500 group-hover:opacity-70 animate-pulse-glow" />
             <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-500/30 bg-slate-900/90 text-emerald-400 shadow-2xl backdrop-blur-xl">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:scale-110">
                 <rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="15" y="2" width="7" height="7" rx="1.5"/>
@@ -104,7 +104,7 @@ export default function LoginPage() {
           <p className="mt-2 text-sm font-medium text-slate-400">Masuk ke dashboard kamu</p>
         </div>
 
-        <div className="relative rounded-3xl border border-slate-800/80 bg-slate-900/50 p-8 shadow-[0_0_50px_-12px_rgba(16,185,129,0.12)] backdrop-blur-2xl ring-1 ring-white/10 space-y-5 transition-all duration-300 hover:border-slate-700/80">
+        <div className="glass-card glass-card-hover relative rounded-3xl p-8 shadow-2xl ring-1 ring-white/10 space-y-5">
           <div>
             <label className="mb-2 block text-xs font-extrabold uppercase tracking-wider text-slate-400">Email</label>
             <div className="relative">
@@ -172,7 +172,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPass(!showPass)}
-                  className="rounded-xl bg-slate-800/50 px-2.5 py-1 text-[11px] font-bold text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition-all active:scale-95 border border-slate-700/40"
+                  className="rounded-xl bg-slate-800/80 px-2.5 py-1 text-[11px] font-bold text-slate-400 hover:bg-slate-800 hover:text-slate-200 transition-all active:scale-95 border border-slate-700/40"
                 >
                   {showPass ? "Sembunyikan" : "Tampilkan"}
                 </button>
