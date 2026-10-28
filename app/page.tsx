@@ -55,15 +55,14 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between p-3.5 rounded-full bg-slate-900/60 border border-white/10 backdrop-blur-2xl shadow-xl">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-teal-400 to-indigo-500 p-[1.5px] shadow-md">
-              <div className="h-full w-full rounded-full bg-slate-950 flex items-center justify-center p-1.5 overflow-hidden">
-                <img src="https://i.postimg.cc/3xVZxXz9/walzpay-app-icon.png" alt="Logo" className="h-full w-full object-contain" />
+              <div className="h-full w-full rounded-full bg-slate-950 flex items-center justify-center p-1 overflow-hidden">
+                <img src="https://cdn.phototourl.com/member/2026-10-28-caf129d3-a92e-4789-9273-6d4c8a50e3b8.jpg" alt="Logo" className="h-full w-full object-contain rounded-full" />
               </div>
             </div>
             <div>
               <p className="text-[10px] font-bold tracking-wider text-slate-400 uppercase font-mono-val">WALZPAY GATEWAY</p>
-              <h1 className="text-xs font-bold text-white font-display flex items-center gap-1">
-                <span>{user?.name || "Merchant Dashboard"}</span>
-                <span>✨</span>
+              <h1 className="text-xs font-bold text-white font-display">
+                {user?.name || "Merchant Dashboard"}
               </h1>
             </div>
           </div>
@@ -78,8 +77,10 @@ export default function DashboardPage() {
       <main className="relative z-10 mx-auto max-w-lg space-y-4 px-4 sm:px-6 pt-5 animate-smooth">
         <div className="card-squircle rounded-[32px] p-6 border border-white/10 shadow-2xl relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-400 flex items-center gap-1.5">
-              <span>💸</span>
+            <span className="text-xs font-semibold text-slate-400 flex items-center gap-2">
+              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-teal-400">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7H14a3.5 3.5 0 010 7H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
               <span>Total Omset Sukses</span>
             </span>
             <button 
@@ -103,9 +104,12 @@ export default function DashboardPage() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
-            <span className="text-[11px] text-slate-400 font-medium">Status Settlement</span>
-            <span className="text-[11px] font-bold text-teal-400 bg-teal-500/10 border border-teal-500/20 px-3 py-1 rounded-full">
-              🎉 {paidOrders.length} Transaksi Lunas
+            <span className="text-[11px] text-slate-400 font-medium">Penyelesaian Settlement</span>
+            <span className="text-[11px] font-bold text-teal-400 bg-teal-500/10 border border-teal-500/20 px-3 py-1 rounded-full flex items-center gap-1.5">
+              <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 text-teal-400">
+                <polyline points="20 6 9 17 4 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span>{paidOrders.length} Lunas</span>
             </span>
           </div>
         </div>
@@ -114,7 +118,10 @@ export default function DashboardPage() {
           <div className="card-squircle rounded-[24px] p-4 border border-white/5">
             <div className="flex items-center justify-between text-slate-400 mb-2">
               <span className="text-[10px] font-bold uppercase tracking-wider font-mono-val">Total Order</span>
-              <span className="text-base">📦</span>
+              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-slate-400">
+                <rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.8" />
+                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" stroke="currentColor" strokeWidth="1.8" />
+              </svg>
             </div>
             <p className="text-xl font-extrabold text-white font-mono-val">{orders.length}</p>
             <p className="text-[10px] text-slate-400 mt-1">Keseluruhan transaksi</p>
@@ -123,7 +130,10 @@ export default function DashboardPage() {
           <div className="card-squircle rounded-[24px] p-4 border border-white/5">
             <div className="flex items-center justify-between text-slate-400 mb-2">
               <span className="text-[10px] font-bold uppercase tracking-wider font-mono-val">Menunggu</span>
-              <span className="text-base">⏳</span>
+              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-amber-400">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8" />
+                <polyline points="12 6 12 12 16 14" stroke="currentColor" strokeWidth="1.8" />
+              </svg>
             </div>
             <p className="text-xl font-extrabold text-amber-400 font-mono-val">{pendingOrders.length}</p>
             <p className="text-[10px] text-slate-400 mt-1">Membutuhkan bayar</p>
@@ -137,7 +147,9 @@ export default function DashboardPage() {
           >
             <div className="flex items-center gap-3.5 z-10">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
-                <span className="text-lg">⚡</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
               </div>
               <div>
                 <p className="text-xs font-bold text-white font-display">Generate QRIS Dinamis</p>
@@ -154,8 +166,12 @@ export default function DashboardPage() {
 
         <div className="card-squircle rounded-[32px] p-5 border border-white/10 space-y-4 shadow-xl">
           <div className="flex items-center justify-between border-b border-white/5 pb-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono-val flex items-center gap-1.5">
-              <span>🧾</span> Transaksi Terakhir
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono-val flex items-center gap-2">
+              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-teal-400">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                <polyline points="14 2 14 8 20 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span>Transaksi Terakhir</span>
             </h3>
             <Link href="/transaksi" className="text-[11px] font-bold text-teal-400 hover:text-teal-300 transition-colors flex items-center gap-1">
               <span>Lihat Semua</span>
@@ -174,7 +190,12 @@ export default function DashboardPage() {
               </div>
             ) : orders.length === 0 ? (
               <div className="py-10 text-center text-slate-400 space-y-2">
-                <span className="text-3xl block">🍃</span>
+                <div className="mx-auto h-12 w-12 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-slate-500">
+                  <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
+                    <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.8" />
+                    <line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" strokeWidth="1.8" />
+                  </svg>
+                </div>
                 <p className="text-xs font-semibold">Belum ada transaksi saat ini</p>
               </div>
             ) : (
@@ -202,7 +223,20 @@ export default function DashboardPage() {
                               : "bg-amber-500/10 border-amber-500/30 text-amber-400"
                           }`}
                         >
-                          {isPaid ? "✅" : isCancelled ? "✕" : isExpired ? "⏰" : "⏳"}
+                          {isPaid ? (
+                            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+                              <polyline points="20 6 9 17 4 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          ) : isCancelled || isExpired ? (
+                            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+                              <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                              <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                          ) : (
+                            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 animate-spin">
+                              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeDasharray="32" strokeDashoffset="12" />
+                            </svg>
+                          )}
                         </div>
                         <div>
                           <p className="font-mono-val text-xs font-bold text-white group-hover:text-teal-300 transition-colors">
