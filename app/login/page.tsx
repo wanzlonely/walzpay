@@ -94,44 +94,48 @@ export default function LoginPage() {
   return (
     <main className="relative min-h-screen w-full bg-[#060913] text-slate-100 flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden select-none">
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-b from-teal-500/15 via-blue-600/10 to-transparent rounded-full blur-[140px] animate-float" />
-        <div className="absolute bottom-0 right-10 w-[450px] h-[450px] bg-purple-600/10 rounded-full blur-[160px]" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[750px] h-[550px] bg-gradient-to-b from-teal-500/20 via-blue-600/10 to-transparent rounded-full blur-[140px] animate-float" />
+        <div className="absolute bottom-0 right-10 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[160px]" />
         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25" />
       </div>
 
       <div className="relative z-10 w-full max-w-md animate-smooth">
         <div className="card-squircle rounded-[36px] p-7 sm:p-9 space-y-7 border border-white/10 shadow-2xl">
           
-          <div className="flex flex-col items-center text-center space-y-3">
-            <div className="relative">
-              <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 opacity-50 blur-md animate-pulse" />
-              <div className="relative h-16 w-16 rounded-[24px] bg-slate-950/80 p-2.5 border border-white/15 shadow-xl flex items-center justify-center">
+          <div className="flex flex-col items-center text-center space-y-4">
+            <div className="relative flex items-center justify-center my-2">
+              <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-teal-400 via-blue-500 to-indigo-600 opacity-50 blur-2xl animate-pulse" />
+              <div className="absolute -inset-3 rounded-full border border-teal-400/30 animate-ring-rotate" />
+              
+              <div className="relative h-28 w-28 sm:h-32 sm:w-32 rounded-[32px] bg-slate-950/90 p-3.5 border border-white/20 shadow-2xl flex items-center justify-center overflow-hidden animate-logo-cinematic">
                 <img
-                  src="https://i.postimg.cc/3xVZxXz9/walzpay-app-icon.png"
+                  src="https://cdn.phototourl.com/member/2026-10-28-caf129d3-a92e-4789-9273-6d4c8a50e3b8.jpg"
                   alt="WALZPAY Logo"
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-contain rounded-2xl"
                 />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent animate-shimmer-sweep pointer-events-none" />
               </div>
             </div>
 
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-300 text-[11px] font-medium mb-2">
-                <span>⚡ Gateway Infrastructure</span>
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-300 text-[11px] font-semibold mb-1">
+                <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 text-teal-400">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>Gateway Infrastructure</span>
               </div>
-              <h1 className="text-2xl font-extrabold text-white tracking-tight font-display">
-                Masuk ke WALZ<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-sky-400 to-purple-400">PAY</span>
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+                WALZ<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-sky-400 to-purple-400">PAY</span>
               </h1>
-              <p className="text-xs text-slate-400 mt-1">
-                Kelola transaksi merchant Anda dalam satu tempat 👋
+              <p className="text-xs text-slate-400">
+                Masuk untuk mengelola transaksi merchant Anda
               </p>
             </div>
           </div>
 
           <div className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-                <span>Email Merchant</span>
-              </label>
+              <label className="text-xs font-semibold text-slate-300">Email Merchant</label>
               <div className="relative flex items-center">
                 <span className="absolute left-4 text-slate-500">
                   <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-slate-400">
@@ -159,16 +163,19 @@ export default function LoginPage() {
                 />
               </div>
               {emailErr && (
-                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1">
-                  <span>🚨</span> {emailErr}
+                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1.5">
+                  <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 text-rose-400 flex-shrink-0">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                    <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  <span>{emailErr}</span>
                 </p>
               )}
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-                <span>Kata Sandi</span>
-              </label>
+              <label className="text-xs font-semibold text-slate-300">Kata Sandi</label>
               <div className="relative flex items-center">
                 <span className="absolute left-4 text-slate-500">
                   <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-slate-400">
@@ -213,15 +220,24 @@ export default function LoginPage() {
                 </button>
               </div>
               {passErr && (
-                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1">
-                  <span>🚨</span> {passErr}
+                <p className="text-[11px] text-rose-400 font-medium pl-2 flex items-center gap-1.5">
+                  <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 text-rose-400 flex-shrink-0">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                    <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  <span>{passErr}</span>
                 </p>
               )}
             </div>
 
             {serverErr && (
               <div className="p-3.5 rounded-[18px] bg-rose-500/10 border border-rose-500/20 text-xs text-rose-300 flex items-center gap-2">
-                <span>⚠️</span>
+                <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-rose-400 flex-shrink-0">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
                 <span>{serverErr}</span>
               </div>
             )}
@@ -241,12 +257,14 @@ export default function LoginPage() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                     </svg>
-                    <span>Memverifikasi...</span>
+                    <span>Memverifikasi Akses...</span>
                   </>
                 ) : (
                   <>
                     <span>Masuk ke Dashboard</span>
-                    <span>🚀</span>
+                    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </>
                 )}
               </div>
@@ -257,7 +275,7 @@ export default function LoginPage() {
             <p className="text-xs text-slate-400">
               Belum punya akun merchant?{" "}
               <Link href="/register" className="font-bold text-teal-400 hover:text-teal-300 transition-colors">
-                Daftar Gratis ✨
+                Daftar Merchant Baru
               </Link>
             </p>
           </div>
@@ -265,7 +283,10 @@ export default function LoginPage() {
         </div>
 
         <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-slate-500">
-          <span>🛡️ Enkripsi Keamanan SSL 256-Bit</span>
+          <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5 text-slate-400">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span>Enkripsi Keamanan Standard SSL 256-Bit</span>
         </div>
       </div>
     </main>
