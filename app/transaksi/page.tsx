@@ -62,17 +62,17 @@ export default function TransaksiPage() {
   const totalPending = orders.filter((o) => ["awaiting_payment", "awaiting_confirmation", "pending"].includes(o.status)).length;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#060812] font-sans pb-28 selection:bg-emerald-500 selection:text-slate-950">
+    <div className="relative min-h-screen overflow-hidden bg-[#030712] font-sans pb-32 text-slate-100 selection:bg-emerald-500 selection:text-slate-950">
       <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px]"></div>
       <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]"></div>
 
-      <div className="sticky top-0 z-20 border-b border-slate-800/80 bg-slate-950/70 px-4 pb-4 pt-8 backdrop-blur-2xl">
+      <div className="sticky top-0 z-20 border-b border-slate-800/80 bg-slate-950/70 px-5 pb-4 pt-8 backdrop-blur-2xl">
         <div className="mx-auto max-w-lg">
           <div className="mb-4 flex items-center justify-between">
             <h1 className="text-2xl font-black tracking-tight text-slate-100">Transaksi</h1>
             <button
               onClick={load}
-              className="group flex items-center gap-1.5 rounded-2xl border border-slate-800/80 bg-slate-900/60 px-3.5 py-2 text-xs font-bold text-slate-300 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-slate-700 hover:bg-slate-800 hover:text-white active:scale-95"
+              className="group flex items-center gap-1.5 rounded-2xl border border-slate-800/80 bg-slate-900/80 px-3.5 py-2 text-xs font-bold text-slate-300 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-emerald-500/40 hover:bg-slate-800 hover:text-emerald-400 active:scale-95"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-500 group-hover:rotate-180">
                 <polyline points="23 4 23 10 17 10" />
@@ -125,13 +125,13 @@ export default function TransaksiPage() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-lg space-y-5 px-4 pt-6">
+      <div className="relative z-10 mx-auto max-w-lg space-y-5 px-5 pt-6">
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-5 shadow-lg backdrop-blur-xl">
+          <div className="glass-card glass-card-hover rounded-3xl p-5 shadow-lg backdrop-blur-xl">
             <p className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-400/80 mb-1">Total Diterima</p>
             <p className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">{formatRupiah(totalPaid)}</p>
           </div>
-          <div className="rounded-3xl border border-amber-500/20 bg-amber-500/5 p-5 shadow-lg backdrop-blur-xl">
+          <div className="glass-card glass-card-hover rounded-3xl p-5 shadow-lg backdrop-blur-xl">
             <p className="text-[10px] font-extrabold uppercase tracking-widest text-amber-400/80 mb-1">Pending</p>
             <p className="text-xl font-black text-amber-400">{totalPending} Order</p>
           </div>
@@ -144,7 +144,7 @@ export default function TransaksiPage() {
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="rounded-3xl border border-slate-800/80 bg-slate-900/40 px-6 py-16 text-center shadow-xl backdrop-blur-2xl">
+          <div className="glass-card rounded-3xl px-6 py-16 text-center shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-800 bg-slate-950 text-slate-500">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -170,7 +170,7 @@ export default function TransaksiPage() {
                 <Link
                   key={order.id}
                   href={`/pay/${order.code}`}
-                  className="group flex items-center gap-4 rounded-3xl border border-slate-800/80 bg-slate-900/50 p-4 shadow-lg backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-slate-700 hover:bg-slate-800/60"
+                  className="glass-card glass-card-hover group flex items-center gap-4 rounded-3xl p-4 shadow-lg backdrop-blur-xl transition-all duration-300 hover:scale-[1.01]"
                 >
                   <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border ${s.bg} ${s.border}`}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={s.text}>
@@ -205,7 +205,7 @@ export default function TransaksiPage() {
 
                   <div className="shrink-0 text-right">
                     <p className="text-sm font-black text-slate-100">{formatRupiah(order.totalAmount)}</p>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ml-auto mt-1 text-slate-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-slate-300">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ml-auto mt-1 text-slate-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-emerald-400">
                       <polyline points="9 18 15 12 9 6" />
                     </svg>
                   </div>
