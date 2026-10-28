@@ -52,25 +52,7 @@ export default function DashboardPage() {
         <div className="absolute -top-32 right-[-15%] h-[520px] w-[520px] rounded-full bg-gradient-to-br from-indigo-300/30 via-violet-300/20 to-blue-300/20 blur-[80px] animate-float" />
         <div className="absolute left-[-20%] top-[35%] h-[420px] w-[420px] rounded-full bg-gradient-to-br from-blue-200/30 to-cyan-200/20 blur-[70px] animate-float-delayed" />
       </div>
-      <header className="sticky top-0 z-30 border-b border-white/70 bg-slate-950/70 backdrop-blur-[20px]">
-        <div className="mx-auto flex max-w-[640px] items-center justify-between px-5 py-[18px]">
-          <div className="flex items-center gap-3.5">
-            <div className="relative flex h-11 w-11 items-center justify-center rounded-[14px] bg-gradient-to-br from-indigo-600 to-violet-600 text-[15px] font-black text-white shadow-[0_8px_20px_rgba(79,70,229,0.3),inset_0_1px_0_rgba(255,255,255,0.3)]">
-              <span className="relative z-10">Q</span>
-              <div className="absolute inset-0 rounded-[14px] bg-gradient-to-br from-white/20 to-transparent" />
-            </div>
-            <div className="leading-none">
-              <h1 className="text-[16px] font-extrabold tracking-[-0.02em] text-slate-900">WALZPAY</h1>
-              <p className="mt-[3px] text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Payment gateway</p>
-            </div>
-          </div>
-          <button onClick={loadData} aria-label="Muat ulang data" className="dashboard-refresh group flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/70 bg-white/80 text-slate-600 shadow-[0_2px_10px_rgba(0,0,0,0.04)] backdrop-blur-xl transition-all duration-300 hover:border-indigo-200 hover:bg-white hover:text-indigo-600 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] active:scale-[0.92]">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-700 ${loading ? "animate-spin" : "group-hover:rotate-180"}`}>
-              <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8V3h-5l2.26 2.26A7 7 0 1 0 21 12Z" />
-            </svg>
-          </button>
-        </div>
-      </header>
+
       <main className="relative z-10 mx-auto max-w-[640px] space-y-5 px-5 pt-6">
         <div className="animate-slideUp">
           <div className="group relative overflow-hidden rounded-[28px] bg-gradient-to-br from-indigo-600 via-indigo-600 to-violet-700 p-[1px] shadow-[0_16px_40px_-16px_rgba(79,70,229,0.6)]">
@@ -199,7 +181,7 @@ export default function DashboardPage() {
                   <Link key={ord.id} href={`/pay/${ord.code}`} className="group flex items-center justify-between rounded-[18px] border border-slate-100 bg-white p-3.5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-[1px] hover:border-indigo-200/60 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] active:scale-[0.98] animate-slideUp" style={{ animationDelay: `${320 + idx * 60}ms` }}>
 <div className="dashboard-brand flex items-center gap-3.5">
                       <div className={`relative flex h-11 w-11 items-center justify-center rounded-[13px] text-[13px] font-bold ring-1 transition-all duration-300 ${ord.status === "paid" ? "bg-emerald-50 text-emerald-600 ring-emerald-100 group-hover:bg-emerald-600 group-hover:text-white group-hover:ring-emerald-600" : ord.status === "cancelled" ? "bg-slate-50 text-slate-400 ring-slate-100" : "bg-amber-50 text-amber-600 ring-amber-100 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-500"}`}>
-                        <span className="relative z-10">{ord.status === "paid" ? <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-label="Lunas"><path d="m5 12 4 4L19 6" /></svg> : ord.status === "cancelled" ? <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-label="Dibatalkan"><path d="M6 6l12 12M18 6 6 18" /></svg> : <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-label="Menunggu"><circle cx="12" cy="12" r="8" /><path d="M12 8v4l2.5 2" /></svg>}</span>
+                        <span className="dashboard-status-icon relative z-10">{ord.status === "paid" ? <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-label="Lunas"><path d="m5 12 4 4L19 6" /></svg> : ord.status === "cancelled" ? <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-label="Dibatalkan"><path d="M6 6l12 12M18 6 6 18" /></svg> : <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-label="Menunggu"><circle cx="12" cy="12" r="8" /><path d="M12 8v4l2.5 2" /></svg>}</span>
                       </div>
                       <div>
                         <p className="font-mono text-[12.5px] font-bold tracking-tight text-slate-900">{ord.code}</p>

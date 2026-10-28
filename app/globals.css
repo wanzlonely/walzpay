@@ -129,6 +129,8 @@ body::before {
 .floating-brand small { margin-top: 3px; color: #8290aa; font-size: 7px; font-weight: 800; letter-spacing: .13em; }
 .floating-brand-status { margin-left: 5px; color: #37c99e; font-size: 9px; }
 .liquid-nav { border-color: rgba(255,255,255,.75) !important; background: rgba(255,255,255,.58) !important; box-shadow: 0 18px 55px rgba(92,112,164,.2), inset 0 1px 0 rgba(255,255,255,.95) !important; }
+.liquid-nav a .bg-gradient-to-br { background: linear-gradient(135deg, #7b83f7, #a879e8) !important; color: #fff !important; box-shadow: 0 8px 18px rgba(116,122,231,.25) !important; }
+.liquid-nav a span.text-emerald-300 { color: #6674df !important; }
 .liquid-nav .text-slate-400, .liquid-nav .text-slate-500 { color: #72809a !important; }
 .dashboard-page { background: #eef3ff !important; color: #202b45; }
 .dashboard-page::before { content: ''; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 8% 6%, rgba(125,153,255,.34), transparent 28%), radial-gradient(circle at 90% 84%, rgba(117,231,220,.28), transparent 26%), radial-gradient(circle at 55% 45%, rgba(231,190,255,.2), transparent 32%); z-index: 0; }
@@ -147,7 +149,12 @@ body::before {
 .dashboard-page .border-slate-100, .dashboard-page .border-white { border-color: rgba(148,163,184,.14); }
 .dashboard-page .bg-slate-50, .dashboard-page .bg-white { background-color: rgba(255,255,255,.48); }
 .dashboard-page .text-slate-900, .dashboard-page .text-slate-700 { color: #202b45; }
-.dashboard-page .text-indigo-600 { color: #a5b4fc; }
+.dashboard-page .text-indigo-600 { color: #5365dc; }
+.dashboard-status-icon { display: inline-flex; align-items: center; justify-content: center; color: #5365dc !important; }
+.dashboard-page .dashboard-status-icon svg { display: block; width: 18px; height: 18px; }
+.dashboard-page .dashboard-status-icon:has(svg[aria-label="Lunas"]) { color: #139f7b !important; }
+.dashboard-page .dashboard-status-icon:has(svg[aria-label="Menunggu"]) { color: #d69018 !important; }
+.dashboard-page .dashboard-status-icon:has(svg[aria-label="Dibatalkan"]) { color: #7a859d !important; }
 .dashboard-page main > div:nth-child(1) > div { background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(223,229,255,.64) 58%, rgba(220,245,241,.62)) !important; border: 1px solid rgba(255,255,255,.9); border-radius: 30px; box-shadow: 0 24px 65px rgba(91,111,168,.2), inset 0 1px 0 rgba(255,255,255,.96); }
 .dashboard-page main > div:nth-child(1) > div h2 { color: #202b45 !important; }
 .dashboard-page main > div:nth-child(1) > div p, .dashboard-page main > div:nth-child(1) > div span { color: #657390 !important; }
