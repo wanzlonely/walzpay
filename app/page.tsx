@@ -43,7 +43,7 @@ export default function DashboardPage() {
   }, [router, loadData]);
 
   const paidOrders = orders.filter((o) => o.status === "paid");
-  const pendingOrders = orders.filter((o) => ["pending", "awaiting_payment"].includes(o.status));
+  const pendingOrders = orders.filter((o) => ["pending", "awaiting_payment", "awaiting_confirmation"].includes(o.status));
   const totalOmset = paidOrders.reduce((sum, o) => sum + o.totalAmount, 0);
 
   return (
@@ -197,7 +197,7 @@ export default function DashboardPage() {
               <div className="space-y-2.5">
                 {orders.slice(0, 5).map((ord, idx) => (
                   <Link key={ord.id} href={`/pay/${ord.code}`} className="group flex items-center justify-between rounded-[18px] border border-slate-100 bg-white p-3.5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-[1px] hover:border-indigo-200/60 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] active:scale-[0.98] animate-slideUp" style={{ animationDelay: `${320 + idx * 60}ms` }}>
-                    <div className="flex items-center gap-3.5">
+<div className="dashboard-brand flex items-center gap-3.5">
                       <div className={`relative flex h-11 w-11 items-center justify-center rounded-[13px] text-[13px] font-bold ring-1 transition-all duration-300 ${ord.status === "paid" ? "bg-emerald-50 text-emerald-600 ring-emerald-100 group-hover:bg-emerald-600 group-hover:text-white group-hover:ring-emerald-600" : ord.status === "cancelled" ? "bg-slate-50 text-slate-400 ring-slate-100" : "bg-amber-50 text-amber-600 ring-amber-100 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-500"}`}>
                         <span className="relative z-10">{ord.status === "paid" ? <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-label="Lunas"><path d="m5 12 4 4L19 6" /></svg> : ord.status === "cancelled" ? <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-label="Dibatalkan"><path d="M6 6l12 12M18 6 6 18" /></svg> : <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-label="Menunggu"><circle cx="12" cy="12" r="8" /><path d="M12 8v4l2.5 2" /></svg>}</span>
                       </div>

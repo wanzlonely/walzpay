@@ -19,7 +19,7 @@ const STATUS_MAP: Record<string, { label: string; text: string; bg: string; bord
 const FILTERS: { key: string; label: string }[] = [
   { key: "all", label: "Semua" },
   { key: "paid", label: "Lunas" },
-  { key: "awaiting_payment", label: "Menunggu" },
+  { key: "pending", label: "Menunggu" },
   { key: "expired", label: "Expired" },
   { key: "cancelled", label: "Dibatalkan" },
 ];
@@ -51,7 +51,8 @@ export default function TransaksiPage() {
   }, [router, load]);
 
   const filtered = orders.filter((o) => {
-    const matchFilter = filter === "all" || o.status === filter;
+    const pendingStatuses = ["pending", "awaiting_payment", "awaiting_confirmation"];
+    const matchFilter = filter === "all" || (filter === "pending" ? pendingStatuses.includes(o.status) : o.status === filter);
     const q = search.toLowerCase();
     const matchSearch =
       !q ||

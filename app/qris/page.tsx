@@ -467,8 +467,11 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
             )}
 
             {order.status === "cancelled" && (
-              <div className="cancelled-payment-state mx-6 mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 px-5 py-4 text-center">
-                <p className="text-sm font-extrabold text-slate-400">Transaksi Dibatalkan</p>
+              <div className="cancelled-payment-state mx-6 mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 px-5 py-5 text-center">
+                <div className="cancelled-icon mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg></div>
+                <p className="text-base font-extrabold text-slate-700">Transaksi Dibatalkan</p>
+                <p className="mt-1 text-xs font-medium text-slate-500">Tagihan ini tidak lagi aktif dan tidak dapat dibayar.</p>
+                <div className="cancelled-summary mt-4 grid grid-cols-2 gap-2 text-left"><div><span>Kode transaksi</span><strong>{order.code}</strong></div><div><span>Total tagihan</span><strong>{formatRupiah(order.totalAmount)}</strong></div></div>
               </div>
             )}
           </div>

@@ -122,7 +122,7 @@ body::before {
 .auth-footer a { color: #60a5fa; font-weight: 700; }
 .auth-note { margin-top: 18px; color: #64748b; font-size: 11px; }
 .auth-note span { color: #22c55e; margin-right: 6px; }
-.floating-brand { position: fixed; top: 14px; left: 50%; z-index: 60; display: flex; align-items: center; gap: 9px; width: max-content; max-width: calc(100vw - 28px); padding: 8px 12px 8px 8px; border: 1px solid rgba(255,255,255,.82); border-radius: 18px; background: rgba(255,255,255,.58); color: #202b45; box-shadow: 0 14px 30px rgba(91,111,168,.16), inset 0 1px 0 rgba(255,255,255,.96); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); transform: translateX(-50%); }
+.floating-brand { position: fixed; top: 14px; left: 50%; z-index: 60; display: flex; align-items: center; gap: 9px; width: min(300px, calc(100vw - 96px)); max-width: calc(100vw - 96px); padding: 9px 14px 9px 9px; border: 1px solid rgba(255,255,255,.82); border-radius: 18px; background: rgba(255,255,255,.58); color: #202b45; box-shadow: 0 14px 30px rgba(91,111,168,.16), inset 0 1px 0 rgba(255,255,255,.96); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); transform: translateX(-50%); }
 .floating-brand-mark { display: grid; width: 29px; height: 29px; place-items: center; border-radius: 10px; background: linear-gradient(135deg, #6d7bf1, #a878e8); color: white; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; box-shadow: 0 5px 14px rgba(103,112,225,.26); }
 .floating-brand strong, .floating-brand small { display: block; line-height: 1; }
 .floating-brand strong { font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: -.02em; }
@@ -132,6 +132,7 @@ body::before {
 .liquid-nav .text-slate-400, .liquid-nav .text-slate-500 { color: #72809a !important; }
 .dashboard-page { background: #eef3ff !important; color: #202b45; }
 .dashboard-page::before { content: ''; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 8% 6%, rgba(125,153,255,.34), transparent 28%), radial-gradient(circle at 90% 84%, rgba(117,231,220,.28), transparent 26%), radial-gradient(circle at 55% 45%, rgba(231,190,255,.2), transparent 32%); z-index: 0; }
+.dashboard-page .dashboard-brand { display: none; }
 .dashboard-page header { border-color: rgba(255,255,255,.74); background: rgba(255,255,255,.52); backdrop-filter: blur(28px) saturate(160%); }
 .dashboard-refresh { border: 1px solid rgba(255,255,255,.86) !important; background: rgba(255,255,255,.62) !important; box-shadow: 0 8px 20px rgba(91,111,168,.13), inset 0 1px 0 rgba(255,255,255,.96) !important; }
 .dashboard-refresh svg { stroke: #5668df; }
@@ -194,7 +195,11 @@ body::before {
 .transactions-page .glass-card .text-emerald-400, .qris-page .glass-card .text-emerald-400, .profile-page .glass-card .text-emerald-400 { color: #5c70ed; }
 .qris-cancel-toggle { background: rgba(255,255,255,.58) !important; border-color: rgba(255,255,255,.86) !important; color: #465575 !important; box-shadow: 0 12px 28px rgba(91,111,168,.13), inset 0 1px 0 rgba(255,255,255,.94) !important; }
 .qris-cancel-toggle:hover { background: rgba(255,255,255,.82) !important; color: #5264dc !important; }
-.cancelled-payment-state { border-color: rgba(140,153,184,.26) !important; background: rgba(255,255,255,.48) !important; color: #5f6d88; box-shadow: inset 0 1px 0 rgba(255,255,255,.88); }
+.cancelled-payment-state { border-color: rgba(140,153,184,.26) !important; background: rgba(255,255,255,.58) !important; color: #5f6d88; box-shadow: inset 0 1px 0 rgba(255,255,255,.88), 0 8px 22px rgba(91,111,168,.08); }
+.cancelled-icon { color: #697894; background: rgba(148,163,184,.16); border: 1px solid rgba(148,163,184,.22); }
+.cancelled-summary > div { display: grid; gap: 3px; padding: 9px; border: 1px solid rgba(148,163,184,.16); border-radius: 12px; background: rgba(255,255,255,.45); }
+.cancelled-summary span { color: #8a96ab; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.cancelled-summary strong { overflow: hidden; color: #394766; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
 .transactions-page .rounded-3xl, .qris-page .rounded-3xl, .profile-page .rounded-3xl { border-radius: 24px; }
 .payment-page .rounded-3xl { border-radius: 28px; }
 .payment-page { width: 100%; min-width: 0; overflow-x: hidden; }
