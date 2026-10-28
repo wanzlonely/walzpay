@@ -17,16 +17,18 @@ export default function BottomNav() {
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-4 pt-2 pointer-events-none" style={{ paddingBottom: "env(safe-area-inset-bottom, 16px)" }}>
       <div className="mx-auto max-w-md pointer-events-auto">
-        <div className="flex items-center rounded-3xl border border-white/80 bg-white/70 p-2 shadow-xl shadow-slate-200/50 backdrop-blur-xl">
+        <div className="relative flex items-center justify-between rounded-3xl border border-slate-800/80 bg-slate-950/80 p-2 shadow-2xl backdrop-blur-2xl ring-1 ring-white/10">
           {tabs.map((tab) => {
             const active = tab.href === "/" ? pathname === "/" : pathname?.startsWith(tab.href);
             return (
-              <Link key={tab.href} href={tab.href} className="relative flex flex-1 flex-col items-center gap-1 rounded-2xl py-2 transition-all">
-                {active && <span className="absolute inset-0 rounded-2xl bg-indigo-50 border border-indigo-100" />}
-                <span className={`relative z-10 flex h-9 w-9 items-center justify-center rounded-xl transition-all ${active ? "bg-indigo-600 text-white shadow-md shadow-indigo-300" : "text-slate-400"}`}>
+              <Link key={tab.href} href={tab.href} className="group relative flex flex-1 flex-col items-center gap-1 rounded-2xl py-1.5 transition-all duration-300 active:scale-95">
+                {active && (
+                  <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 border border-emerald-500/20 shadow-lg shadow-emerald-500/10 animate-in fade-in zoom-in-95 duration-300" />
+                )}
+                <span className={`relative z-10 flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-300 ${active ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 shadow-md shadow-emerald-500/25 scale-105" : "text-slate-400 group-hover:text-slate-200"}`}>
                   {tab.icon(!!active)}
                 </span>
-                <span className={`relative z-10 text-[10px] ${active ? "font-bold text-indigo-900" : "font-semibold text-slate-400"}`}>
+                <span className={`relative z-10 text-[10px] transition-colors duration-300 ${active ? "font-extrabold text-emerald-400" : "font-semibold text-slate-500 group-hover:text-slate-400"}`}>
                   {tab.label}
                 </span>
               </Link>
