@@ -138,6 +138,7 @@ body::before {
 .app-page::after, .payment-page::after { content: ''; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 12% 5%, rgba(84,74,220,.24), transparent 28%), radial-gradient(circle at 88% 88%, rgba(36,178,191,.14), transparent 26%); z-index: 0; }
 .app-page::before, .payment-page::before { content: ''; position: fixed; inset: 0; pointer-events: none; background: linear-gradient(120deg, rgba(255,255,255,.025), transparent 38%, rgba(78,91,210,.08)); z-index: 0; }
 .app-page > *, .payment-page > * { position: relative; z-index: 1; }
+.app-page > .pointer-events-none, .payment-page > .pointer-events-none { position: absolute !important; z-index: 0 !important; }
 .app-page .sticky, .app-page .border-b { border-color: rgba(148,163,184,.12); background: rgba(5,10,22,.82); }
 .app-page .glass-card, .app-page .glass-card-hover, .payment-page .glass-card { border-radius: 26px; border: 1px solid rgba(148,163,184,.16); background: linear-gradient(145deg, rgba(22,31,55,.88), rgba(12,19,36,.76)); box-shadow: 0 18px 55px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.05); backdrop-filter: blur(26px) saturate(145%); -webkit-backdrop-filter: blur(26px) saturate(145%); }
 .app-page .glass-card-hover:hover, .payment-page .glass-card-hover:hover { border-color: rgba(129,140,248,.48); box-shadow: 0 26px 70px rgba(0,0,0,.34), 0 0 0 1px rgba(129,140,248,.08); transform: translateY(-3px); }
