@@ -174,6 +174,8 @@ body:has(.auth-page) { overflow: hidden; }
 .dashboard-page .dashboard-status-icon:has(svg[aria-label="Lunas"]) { color: #139f7b !important; }
 .dashboard-page .dashboard-status-icon:has(svg[aria-label="Menunggu"]) { color: #d69018 !important; }
 .dashboard-page .dashboard-status-icon:has(svg[aria-label="Dibatalkan"]) { color: #7a859d !important; }
+.dashboard-page .dashboard-status-icon:has(svg[aria-label="Expired"]) { color: #d35c6d !important; }
+.dashboard-page .dashboard-brand { display: none; }
 .dashboard-page main > div:nth-child(1) > div { background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(223,229,255,.64) 58%, rgba(220,245,241,.62)) !important; border: 1px solid rgba(255,255,255,.9); border-radius: 30px; box-shadow: 0 24px 65px rgba(91,111,168,.2), inset 0 1px 0 rgba(255,255,255,.96); }
 .dashboard-page main > div:nth-child(1) > div h2 { color: #202b45 !important; }
 .dashboard-page main > div:nth-child(1) > div p, .dashboard-page main > div:nth-child(1) > div span { color: #657390 !important; }
