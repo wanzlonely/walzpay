@@ -378,7 +378,7 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
 
   if (noQris) {
     return (
-      <div className="rounded-3xl border border-slate-800/80 bg-slate-900/50 px-6 py-16 text-center shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
+      <div className="glass-card rounded-3xl p-6 py-16 text-center shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
         <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-500/30 bg-amber-500/10 text-amber-400">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2L1 21h22L12 2zm0 3l8.22 14H3.78L12 5zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z" />
@@ -399,7 +399,7 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
           <PaymentSuccessOverlay order={order} onClose={() => setShowSuccess(false)} />
         )}
         <div className="animate-in fade-in slide-in-from-bottom-4 space-y-4 duration-500">
-          <div className="overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/50 shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
+          <div className="glass-card overflow-hidden rounded-3xl p-0 shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
             <div className="flex items-center justify-between border-b border-slate-800/60 bg-slate-950/40 px-6 py-4">
               <span className="max-w-[60%] truncate text-sm font-extrabold text-slate-200">{order.merchantName}</span>
               {st && (
@@ -513,7 +513,7 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
   }
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 space-y-6 rounded-3xl border border-slate-800/80 bg-slate-900/50 p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 duration-500">
+    <div className="glass-card glass-card-hover animate-in fade-in slide-in-from-bottom-4 space-y-6 rounded-3xl p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 duration-500">
       <div>
         <label className="mb-2 block text-xs font-extrabold uppercase tracking-wider text-slate-400">
           QRIS Yang Digunakan
@@ -754,11 +754,11 @@ function QrisPageInner() {
   const defaultQrisId = list.find((q) => q.isDefault)?.id ?? list[0]?.id ?? null;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#060812] font-sans pb-28 selection:bg-emerald-500 selection:text-slate-950">
+    <div className="relative min-h-screen overflow-hidden bg-[#030712] font-sans pb-32 text-slate-100 selection:bg-emerald-500 selection:text-slate-950">
       <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px]"></div>
       <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]"></div>
 
-      <div className="sticky top-0 z-20 border-b border-slate-800/80 bg-slate-950/70 px-4 pb-4 pt-8 backdrop-blur-2xl">
+      <div className="sticky top-0 z-20 border-b border-slate-800/80 bg-slate-950/70 px-5 pb-4 pt-8 backdrop-blur-2xl">
         <div className="mx-auto max-w-lg">
           <div className="mb-5 flex items-center justify-between">
             <div>
@@ -799,13 +799,13 @@ function QrisPageInner() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-lg space-y-5 px-4 pt-6">
+      <div className="relative z-10 mx-auto max-w-lg space-y-5 px-5 pt-6">
         {activeTab === "generate" && <GenerateTab list={list} defaultQrisId={defaultQrisId} />}
 
         {activeTab === "list" && (
           <>
             {showForm && (
-              <div className="animate-in fade-in slide-in-from-top-4 space-y-6 rounded-3xl border border-slate-800/80 bg-slate-900/50 p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 duration-500">
+              <div className="glass-card glass-card-hover animate-in fade-in slide-in-from-top-4 space-y-6 rounded-3xl p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 duration-500">
                 <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-200">Upload Gambar QRIS</h3>
                 <div
                   ref={dropRef}
@@ -896,7 +896,7 @@ function QrisPageInner() {
                 {[1, 2].map((i) => <div key={i} className="h-32 w-full animate-pulse rounded-3xl bg-slate-900/40 border border-slate-800/50" />)}
               </div>
             ) : list.length === 0 && !showForm ? (
-              <div className="rounded-3xl border border-slate-800/80 bg-slate-900/50 px-6 py-16 text-center shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
+              <div className="glass-card rounded-3xl px-6 py-16 text-center shadow-xl backdrop-blur-2xl ring-1 ring-white/10">
                 <p className="text-lg font-extrabold text-slate-100">Belum ada QRIS</p>
                 <button onClick={() => setShowForm(true)}
                   className="mt-6 rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 px-8 py-3.5 text-sm font-extrabold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95">
@@ -909,7 +909,7 @@ function QrisPageInner() {
                   const theme = issuerColor[item.issuer] ?? "text-slate-400 bg-slate-500/10 border-slate-500/30";
                   const name = ISSUER_NAMES[item.issuer] ?? item.issuer;
                   return (
-                    <div key={item.id} className="group rounded-3xl border border-slate-800/80 bg-slate-900/50 p-6 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 transition-all duration-300 hover:border-slate-700">
+                    <div key={item.id} className="glass-card glass-card-hover group rounded-3xl p-6 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 transition-all duration-300">
                       <div className="mb-5 flex items-start justify-between">
                         <div className="flex items-center gap-4">
                           <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-sm font-black ${theme}`}>
