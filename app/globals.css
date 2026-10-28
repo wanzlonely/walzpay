@@ -137,7 +137,12 @@ body::before {
 .dashboard-page .text-indigo-600 { color: #a5b4fc; }
 .dashboard-page main > div:nth-child(1) > div { background: linear-gradient(135deg, #5f4fe6, #4934d4 56%, #3a2aba) !important; border-radius: 30px; box-shadow: 0 22px 55px rgba(79,70,229,.32); }
 .dashboard-page main > div:nth-child(2) > div { background: linear-gradient(145deg, rgba(236,246,247,.9), rgba(205,222,231,.78)) !important; border-color: rgba(255,255,255,.7); }
-.dashboard-page main > div:nth-child(2) > div:nth-child(2) { background: linear-gradient(145deg, rgba(255,248,226,.94), rgba(233,225,204,.82)) !important; }
+.dashboard-page main > div:nth-child(2) > div:nth-child(2) { background: linear-gradient(145deg, rgba(255,247,231,.94), rgba(244,232,210,.86)) !important; }
+.dashboard-page main > div:nth-child(3) a { border: 1px solid rgba(255,255,255,.8); background: linear-gradient(145deg, rgba(255,255,255,.66), rgba(255,255,255,.36)); color: #273452; box-shadow: 0 14px 32px rgba(91,111,168,.12); }
+.dashboard-page main > div:nth-child(3) a > div { background: transparent !important; color: #273452; }
+.dashboard-page main > div:nth-child(3) a p { color: #273452; }
+.dashboard-page main > div:nth-child(3) a p + p { color: #71809c; }
+.dashboard-page main > div:nth-child(3) a svg { color: #5b6df6; }
 .dashboard-page main > div:nth-child(3), .dashboard-page main > div:nth-child(4) { background: linear-gradient(145deg, rgba(255,255,255,.66), rgba(255,255,255,.35)); border-color: rgba(255,255,255,.72); box-shadow: 0 20px 60px rgba(91,111,168,.16); }
 .dashboard-page .shadow-\[0_8px_24px_rgba\(0\,0\,0\,0\.04\)\], .dashboard-page .shadow-\[0_12px_32px_rgba\(0\,0\,0\,0\.05\)\] { box-shadow: 0 16px 44px rgba(0,0,0,.22); }
 .app-page, .payment-page { background: #eef3ff !important; color: #202b45; }

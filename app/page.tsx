@@ -61,7 +61,7 @@ export default function DashboardPage() {
             </div>
             <div className="leading-none">
               <h1 className="text-[16px] font-extrabold tracking-[-0.02em] text-slate-900">WALZPAY</h1>
-              <p className="mt-[3px] text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Payment workspace</p>
+              <p className="mt-[3px] text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Payment gateway</p>
             </div>
           </div>
           <button onClick={loadData} className="group flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/70 bg-white/80 text-slate-600 shadow-[0_2px_10px_rgba(0,0,0,0.04)] backdrop-blur-xl transition-all duration-300 hover:border-indigo-200 hover:bg-white hover:text-indigo-600 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] active:scale-[0.92]">
@@ -88,11 +88,6 @@ export default function DashboardPage() {
                     <span className="text-[11px] font-bold tracking-wide text-white/90">Live Monitoring</span>
                   </div>
                   <h2 className="mt-4 max-w-[16ch] text-[26px] font-extrabold leading-[0.95] tracking-[-0.03em] text-white">Halo, {user?.name || "TOKO WALZY"} 👋</h2>
-                  <p className="mt-2.5 max-w-[28ch] text-[13px] font-medium leading-[1.5] text-indigo-100/80">Kelola pembayaran QRIS dinamis, pantau omset realtime dalam satu dashboard cantik.</p>
-                  <div className="mt-4 flex items-center gap-2 text-[11px] font-semibold text-indigo-100/70">
-                    <div className="h-px w-8 bg-white/20" />
-                    <span>{qrisList.length} QRIS tersimpan • {orders.length} total order</span>
-                  </div>
                 </div>
                 <div className="hidden h-[88px] w-[88px] shrink-0 items-center justify-center rounded-[20px] border border-white/15 bg-white/10 backdrop-blur-xl sm:flex">
                   <div className="h-12 w-12 rounded-[12px] bg-white shadow-[0_8px_20px_rgba(0,0,0,0.12)] p-1.5">
