@@ -21,6 +21,7 @@ const FILTERS: { key: string; label: string }[] = [
   { key: "paid", label: "Lunas" },
   { key: "awaiting_payment", label: "Menunggu" },
   { key: "expired", label: "Expired" },
+  { key: "cancelled", label: "Dibatalkan" },
 ];
 
 export default function TransaksiPage() {

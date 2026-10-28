@@ -55,7 +55,7 @@ export default function PaymentPage() {
       const res = await fetch(`/api/orders/${code}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "cancel" }),
+        body: JSON.stringify({ status: "cancelled" }),
       });
       const json = await res.json();
       setOrder(json.success ? json.data : (prev => prev ? { ...prev, status: "cancelled" } : null));

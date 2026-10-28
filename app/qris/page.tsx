@@ -334,7 +334,7 @@ function GenerateTab({ list, defaultQrisId }: { list: SavedQris[]; defaultQrisId
       const res = await fetch(`/api/orders/${order.code}`, {
         method: "PATCH",
         headers: authHeaders(),
-        body: JSON.stringify({ action: "cancel" }),
+        body: JSON.stringify({ status: "cancelled" }),
       });
       const json = await res.json();
       if (json.success) {
