@@ -75,9 +75,9 @@ export default function ProfilePage() {
 
   if (!user) {
     return (
-      <div className="relative flex min-h-screen items-center justify-center bg-[#060812]">
-        <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
-        <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-pulse duration-[7000ms]" />
+      <div className="relative flex min-h-screen items-center justify-center bg-[#030712]">
+        <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-emerald-500/15 blur-[120px] animate-pulse-glow" />
+        <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-cyan-500/15 blur-[120px] animate-float-slow" />
         <div className="h-10 w-10 animate-spin rounded-full border-2 border-emerald-400 border-t-transparent shadow-lg shadow-emerald-500/20" />
       </div>
     );
@@ -86,7 +86,7 @@ export default function ProfilePage() {
   const initials = user.name?.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase() || "?";
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#060812] px-4 pb-28 pt-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
+    <div className="relative min-h-screen overflow-hidden bg-[#030712] px-5 pb-32 pt-8 font-sans selection:bg-emerald-500 selection:text-slate-950">
       <div className="pointer-events-none absolute -left-20 top-0 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px]"></div>
       <div className="pointer-events-none absolute -right-20 bottom-20 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[120px]"></div>
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-indigo-500/5 blur-[140px]" />
@@ -123,7 +123,7 @@ export default function ProfilePage() {
 
         {activeSection === "account" && (
           <div className="animate-in fade-in slide-in-from-right-4 duration-300 space-y-5">
-            <div className="rounded-3xl border border-slate-800/80 bg-slate-900/50 p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-5">
+            <div className="glass-card glass-card-hover rounded-3xl p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-5">
               <p className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Informasi Akun</p>
               <div className="space-y-4">
                 <div>
@@ -157,7 +157,7 @@ export default function ProfilePage() {
 
         {activeSection === "api" && (
           <div className="animate-in fade-in slide-in-from-right-4 duration-300 space-y-5">
-            <div className="rounded-3xl border border-slate-800/80 bg-slate-900/50 p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-6">
+            <div className="glass-card glass-card-hover rounded-3xl p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-6">
               <p className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Autentikasi API</p>
               <CopyField label="Kunci API Kamu" value={user.apiKey || "—"} mono />
               <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4">
@@ -167,7 +167,7 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-800/80 bg-slate-900/50 p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-5">
+            <div className="glass-card glass-card-hover rounded-3xl p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-5">
               <p className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Webhook Notifikasi</p>
               <div>
                 <label className="mb-2 block text-xs font-extrabold uppercase tracking-wider text-slate-400">
@@ -212,7 +212,7 @@ export default function ProfilePage() {
 
         {activeSection === "docs" && (
           <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-            <div className="rounded-3xl border border-slate-800/80 bg-slate-900/50 p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-6">
+            <div className="glass-card glass-card-hover rounded-3xl p-7 shadow-xl backdrop-blur-2xl ring-1 ring-white/10 space-y-6">
               <p className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Referensi API</p>
 
               <div className="space-y-5">
