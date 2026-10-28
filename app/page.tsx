@@ -47,7 +47,7 @@ export default function DashboardPage() {
   const totalOmset = paidOrders.reduce((sum, o) => sum + o.totalAmount, 0);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#070b14] pb-32 selection:bg-indigo-500/20">
+    <div className="dashboard-page relative min-h-screen overflow-hidden bg-[#070b14] pb-32 selection:bg-indigo-500/20">
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute -top-32 right-[-15%] h-[520px] w-[520px] rounded-full bg-gradient-to-br from-indigo-300/30 via-violet-300/20 to-blue-300/20 blur-[80px] animate-float" />
         <div className="absolute left-[-20%] top-[35%] h-[420px] w-[420px] rounded-full bg-gradient-to-br from-blue-200/30 to-cyan-200/20 blur-[70px] animate-float-delayed" />
